@@ -1,0 +1,27 @@
+prg_comment = ""
+prg_version = "0.5.1"
+def program(prg, cmd):
+    prg.add(-100000, "shutter MOT close")
+    prg.add(-5000, "Shutter Gray Molasses OFF")
+    prg.add(-1000, "TTL Dark spot OFF")
+    prg.add(0, "AOM DS + RepumperMOT Amp ", 1)
+    prg.add(500, "Config field OFF")
+    prg.add(2500, "TTL Repumper MOT OFF")
+    prg.add(3500, "AOM 3DMOT Amp ch2 (-)", 1)
+    prg.add(4500, "AOM 3DMOT Amp ch1 (+)", 1)
+    prg.add(5500, "AOM Push Amp ch1 (+)", 1)
+    prg.add(6500, "AOM Push Amp ch2 (-)", 1)
+    prg.add(7500, "AOM 2DMOT Amp ch2 (-)", 1)
+    prg.add(8500, "AOM Zeeman Slower Amp", 1)
+    prg.add(9500, "AOM 2DMOT Amp ch1 (+)", 1)
+    prg.add(10000, "AOM GM Amp ch1 (+)", 1)
+    prg.add(10500, "AOM GM Amp ch2 (-)", 1)
+    prg.add(5005100, "AOM 2DMOT Amp ch1 (+)", 1000, enable=False)
+    prg.add(5005450, "AOM 2DMOT Amp ch2 (-)", 1000, enable=False)
+    prg.add(5005550, "AOM 3DMOT Amp ch1 (+)", 1000, enable=False)
+    prg.add(5005900, "AOM 3DMOT Amp ch2 (-)", 1000, enable=False)
+    prg.add(5006000, "AOM DS + RepumperMOT Amp ", 1000, enable=False)
+    prg.add(5006100, "AOM Push Amp ch1 (+)", 1000, enable=False)
+    prg.add(5006450, "AOM Push Amp ch2 (-)", 1000, enable=False)
+    prg.add(5006550, "AOM Zeeman Slower Amp", 1000, enable=False)
+    return prg

@@ -1,0 +1,27 @@
+prg_comment = ""
+prg_version = "0.5.1"
+def program(prg, cmd):
+    prg.add(0, "switch off MOT ")
+    prg.add(10900, "Initialize_Dipole_Off")
+    prg.add(10000900, "Set Bright MOT")
+    prg.add(10510900, "AOM IR Horizontal freq", 80.00)
+    prg.add(10511250, "AOM IR Vertical freq", 80.00)
+    prg.add(90511250, "Compressed_MOT")
+    prg.add(90741250, "TDMOT", enable=False)
+    prg.add(90761250, "switch off MOT ")
+    prg.add(90764000, "GM pulse 05ms", enable=False)
+    prg.add(90774000, "Bright_Molasses_Ramp", enable=False)
+    prg.add(90779000, "GM Ramp DipoleLoad", enable=False)
+    prg.add(90779000, "GM Ramp 12 Gamma", enable=False)
+    prg.add(90790000, "DAC IR Horizontal ramp", start_t=0, stop_x=5.4, n_points=20, start_x=2, stop_t=10, enable=False)
+    prg.add(91790000, "Picture Na", enable=False)
+    prg.add(91790000, "Picture Na Pushprobe", enable=False)
+    prg.add(91790000, "AOM IR Horizontal freq", 130.00)
+    prg.add(91790500, "AOM IR Vertical freq", 120.00)
+    prg.add(91793000, "Picture Push Na", enable=False)
+    prg.add(91793000, "Picture Na", enable=False)
+    prg.add(91793000, "Picture Na_offset")
+    prg.add(91793000, "Picture Na Pushprobe", enable=False)
+    prg.add(98796040, "Set Bright MOT")
+    prg.add(98803463, "Initialize_Dipole_Off")
+    return prg

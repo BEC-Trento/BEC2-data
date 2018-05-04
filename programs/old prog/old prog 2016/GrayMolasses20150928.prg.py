@@ -1,0 +1,25 @@
+prg_comment=""
+prg_version = "0.5.1"
+def program(prg, cmd):
+    prg.add(10, "Initialize 0 TTL and Synchronize.sub")
+    prg.add(500, "Config Field OFF.sub", enable=False)
+    prg.add(12580, "B comp x", 0.0)
+    prg.add(50000, "Optical Levit (-) Amp", 1000)
+    prg.add(100000, "B comp y", 0.0000)
+    prg.add(110000, "IGBT B comp y ON")
+    prg.add(1500000, "Set MOT NaK.sub")
+    prg.add(2000000, "Dark Spot MOT load.sub")
+    prg.add(2100000, "Config MOT.sub")
+    prg.add(10000000, "Optical Levit ON")
+    prg.add(77000000, "Shutter Probe Na Open")
+    prg.add(79829000, "Config Field OFF.sub")
+    prg.add(79830000, "MOT lights Off.sub")
+    prg.add(79832010, "GrayMolasses_ON.sub", enable=False)
+    prg.add(79837000, "Rampa_GrayMol.sub", enable=False)
+    prg.add(79837000, "GrayMolasses_OFF.sub", enable=False)
+    prg.add(79840000, "Picture close NaK.sub")
+    prg.add(79997100, "Repumper D1 OFF")
+    prg.add(101503961, "Set MOT NaK.sub")
+    prg.add(102003961, "Config MOT.sub")
+    prg.add(102103961, "Dark Spot MOT load.sub")
+    return prg

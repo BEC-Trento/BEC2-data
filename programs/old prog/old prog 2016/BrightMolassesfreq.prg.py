@@ -1,0 +1,27 @@
+prg_comment = ""
+prg_version = "0.5.1"
+def program(prg, cmd):
+    prg.add(20, "Na Repumper Tune (+) freq", 1707.000000)
+    prg.add(100, "Na 3D MOT cool (-) freq", 115.000000)
+    prg.add(500, "Na 3D MOT cool (+) freq", 105.000000)
+    prg.add(5100, "Na 3D MOT cool (-) freq", 116.000000)
+    prg.add(5500, "Na 3D MOT cool (+) freq", 104.000000)
+    prg.add(10100, "Na 3D MOT cool (-) freq", 117.000000)
+    prg.add(10500, "Na 3D MOT cool (+) freq", 103.000000)
+    prg.add(15100, "Na 3D MOT cool (-) freq", 118.000000)
+    prg.add(15500, "Na 3D MOT cool (+) freq", 102.000000)
+    prg.add(20099, "Na 3D MOT cool (-) freq", 119.000000)
+    prg.add(20500, "Na 3D MOT cool (+) freq", 101.000000)
+    prg.add(25099, "Na 3D MOT cool (-) freq", 120.000000)
+    prg.add(25500, "Na 3D MOT cool (+) freq", 100.000000)
+    prg.add(30099, "Na 3D MOT cool (-) freq", 121.000000)
+    prg.add(30500, "Na 3D MOT cool (+) freq", 99.000000)
+    prg.add(35100, "Na 3D MOT cool (-) freq", 122.000000)
+    prg.add(35500, "Na 3D MOT cool (+) freq", 98.000000)
+    prg.add(40100, "Na 3D MOT cool (-) freq", 123.000000)
+    prg.add(40500, "Na 3D MOT cool (+) freq", 97.000000)
+    prg.add(45100, "Na 3D MOT cool (-) freq", 124.000000)
+    prg.add(45500, "Na 3D MOT cool (+) freq", 96.000000)
+    prg.add(50100, "Na 3D MOT cool (-) freq", 125.000000)
+    prg.add(50500, "Na 3D MOT cool (+) freq", 95.000000)
+    return prg

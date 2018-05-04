@@ -1,0 +1,26 @@
+prg_comment = ""
+prg_version = "0.5.1"
+def program(prg, cmd):
+    prg.add(0, "switch off MOT ")
+    prg.add(10900, "Initialize_Dipole_Off")
+    prg.add(10000900, "Set Bright MOT")
+    prg.add(10500000, "DAC Horiz IR", 4.5000)
+    prg.add(10500500, "DAC Vert IR", 5.0000)
+    prg.add(10511400, "AOM IR Horizontal freq", 80.00)
+    prg.add(10511750, "AOM IR Vertical freq", 80.00)
+    prg.add(90750500, "CMOT_DipoleLoad")
+    prg.add(91559750, "switch off MOT ")
+    prg.add(91559750, "switch off MOT _ Depumper ", enable=False)
+    prg.add(91562500, "GM pulse Dipole_Load")
+    prg.add(92162500, "Picture Na", enable=False)
+    prg.add(92162500, "Picture Na_offset", enable=False)
+    prg.add(92162500, "Picture Na Pushprobe", enable=False)
+    prg.add(92162500, "AOM IR Horizontal freq", 120.00)
+    prg.add(92163000, "AOM IR Vertical freq", 120.00)
+    prg.add(92163500, "Picture Push Na", enable=False)
+    prg.add(92163500, "Picture Na", enable=False)
+    prg.add(92163500, "Picture Na_offset")
+    prg.add(92163500, "Picture Na Pushprobe", enable=False)
+    prg.add(99166540, "Set Bright MOT")
+    prg.add(99173963, "Initialize_Dipole_Off")
+    return prg
