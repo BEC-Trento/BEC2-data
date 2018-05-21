@@ -49,14 +49,14 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(591, 621, 1)
+    iters = np.arange(0.006, 0.025, 0.0025)
     j = 0
     while(cmd.running):
-        LUT1 = iters[j]
-        cmd.set_var('LUT', LUT1)
+        pulse1 = iters[j]
+        cmd.set_var('pulse', pulse1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\nLUT = %g\n'%(j+1, len(iters), LUT1))
-        cmd.run(wait_end=True, add_time=10000)
+        print('Run #%d/%d, with variables:\npulse = %g\n'%(j+1, len(iters), pulse1))
+        cmd.run(wait_end=True, add_time=1000)
         j += 1
         if j == len(iters):
             cmd.stop()

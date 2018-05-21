@@ -1,7 +1,7 @@
 prg_comment = ""
 prg_version = "0.5.1"
 def program(prg, cmd):
-    prg.add(0, "Shutter RepumperMOT ON")
+    prg.add(-2805000, "Shutter RepumperMOT ON")
     prg.add(-2290000, "AOM Repumper Amp", 1000)
     prg.add(-2280000, "AOM Repumper freq", 225.00)
     prg.add(-2272500, "AOM Probe Amp ch2 (-)", 1)
@@ -28,8 +28,8 @@ def program(prg, cmd):
     prg.add(207000, "AOM Probe Detuning", 0.000)
     prg.add(207800, "AOM DS + RepumperMOT Amp ", 1000)
     prg.add(208300, "TTL Repumper MOT  ON")
-    prg.add(208700, "TTL Repumper MOT OFF", enable=False)
-    prg.add(208750, "AOM DS + RepumperMOT Amp ", 1, enable=False)
+    prg.add(208700, "TTL Repumper MOT OFF")
+    prg.add(208750, "AOM DS + RepumperMOT Amp ", 1)
     prg.add(209700, "TTL Picture  ON")
     prg.add(210000, "Oscilloscope Trigger OFF")
     prg.add(210100, "AOM Probe Amp ch1 (+)", 1000)

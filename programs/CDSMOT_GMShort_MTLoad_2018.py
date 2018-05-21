@@ -14,14 +14,14 @@ def program(prg, cmd):
     prg.add(135112949, "wait")
     prg.add(135113949, "Config Field MT")
     prg.add(135115949, "DAC BCompZ", 0.2400, enable=False)
-    prg.add(142615949, "Config field OFF")
-    prg.add(142625949, "Oscilloscope Trigger ON", enable=False)
-    prg.add(142625949, "Picture Na_2Gdet_offset", enable=False)
-    prg.add(142625949, "Picture Na_offset", enable=False)
-    prg.add(142625949, "Picture Na_3Gdet_offset", enable=False)
-    prg.add(142650949, "Picture Na_4Gdet_offset")
-    prg.add(142850949, "Oscilloscope Trigger OFF", enable=False)
-    prg.add(146956508, "Set MOT")
+    prg.add(145115949, "Config field OFF")
+    prg.add(145125949, "Oscilloscope Trigger ON", enable=False)
+    prg.add(145125949, "Picture Na_2Gdet_offset", enable=False)
+    prg.add(145125949, "Picture Na_offset", enable=False)
+    prg.add(145125949, "Picture Na_3Gdet_offset", enable=False)
+    prg.add(145205949, "Picture Na_4Gdet_offset")
+    prg.add(145405949, "Oscilloscope Trigger OFF", enable=False)
+    prg.add(149511508, "Set MOT")
     return prg
 def commands(cmd):
     import numpy as np

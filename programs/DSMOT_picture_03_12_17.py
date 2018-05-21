@@ -19,14 +19,14 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(25, 35, 1)
+    iters = np.arange(0.23, 0.261, 0.003)
     j = 0
     while(cmd.running):
-        f11 = iters[j]
-        cmd.set_var('f1', f11)
+        bfin1 = iters[j]
+        cmd.set_var('bfin', bfin1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\nf1 = %g\n'%(j+1, len(iters), f11))
-        cmd.run(wait_end=True, add_time=10000)
+        print('Run #%d/%d, with variables:\nbfin = %g\n'%(j+1, len(iters), bfin1))
+        cmd.run(wait_end=True, add_time=1000)
         j += 1
         if j == len(iters):
             cmd.stop()

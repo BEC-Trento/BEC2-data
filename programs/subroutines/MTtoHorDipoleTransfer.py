@@ -6,4 +6,7 @@ def program(prg, cmd):
     prg.add(16, "MT Current Ramp", start_t=0, stop_x=0, n_points=100, start_x=3.5, stop_t=1000)
     prg.add(10012, "IGBT BCompY field CLOSE", enable=False)
     prg.add(10000100, "Compensate_external_Mag_Field", enable=False)
+    prg.add(10001000, "IGBT Magnetic Trap OPEN", enable=False)
+    prg.add(10001100, "IGBT AntiHelm OPEN")
+    prg.add(10001200, "Relay Helm OPEN")
     return prg
