@@ -23,6 +23,7 @@ def program(prg, cmd):
     prg.add(235394859, "MT_FastTransfer_to_Dipole10A")
     prg.add(235394859, "MT_Piecewise_Transfer_to_Dipole10A", enable=False)
     prg.add(239394859, "Horizontal Dipole Evaporation Ramp CMT10A_5.4V")
+    prg.add(239394859, "Horizontal Dipole Evaporation Ramp TEST_220518", enable=False)
     prg.add(239394859, "Horizontal Dipole Evaporation Ramp variable", enable=False)
     prg.add(271894859, "[VOID] End Evaporation")
     prg.add(271895510, "IGBT BCompY field CLOSE", enable=False)

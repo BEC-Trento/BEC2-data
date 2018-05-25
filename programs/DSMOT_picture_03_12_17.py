@@ -19,13 +19,15 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(0.23, 0.261, 0.003)
+    pulse_arr, dummy_arr = np.mgrid[0.0025:0.2:0.0075, 0:3:1, ]
+    iters = list(zip(pulse_arr.ravel(), dummy_arr.ravel()))
     j = 0
     while(cmd.running):
-        bfin1 = iters[j]
-        cmd.set_var('bfin', bfin1)
+        pulse1, dummy1 = iters[j]
+        cmd.set_var('pulse', pulse1)
+        cmd.set_var('dummy', dummy1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\nbfin = %g\n'%(j+1, len(iters), bfin1))
+        print('Run #%d/%d, with variables:\npulse = %g\ndummy = %g\n'%(j+1, len(iters), pulse1, dummy1))
         cmd.run(wait_end=True, add_time=1000)
         j += 1
         if j == len(iters):

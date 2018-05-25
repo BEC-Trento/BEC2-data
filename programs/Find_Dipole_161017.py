@@ -19,33 +19,20 @@ def program(prg, cmd):
     prg.add(235351849, "[VOID] End Evaporation")
     prg.add(235352849, "DAC BCompZ", 0.2400, enable=False)
     prg.add(235354349, "MT_FastTransfer_to_Dipole10A")
-    prg.add(238854349, "IGBT BCompY field CLOSE", enable=False)
-    prg.add(238854849, "BCompY current ramp", start_t=0, stop_x=10, n_points=30, start_x=0, stop_t=49, enable=False)
-    prg.add(239194849, "MT Current Ramp", start_t=0, stop_x=15, n_points=20, start_x=3.5, stop_t=15, enable=False)
-    prg.add(239354349, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
-    prg.add(239356349, "Swich Off Dipole")
-    prg.add(239357849, "DAC BCompZ", 0.2400, functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False), enable=False)
-    prg.add(239432849, "Picture Na_Shortrepumper_offset", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
-    prg.add(239432849, "Picture Na_2Gdet_offset", enable=False)
-    prg.add(239432849, "Picture Na_1Gdet_offset", enable=False)
-    prg.add(239432849, "Picture Na_offset", enable=False)
-    prg.add(239432849, "Picture Na_Shortrepumper_offset", enable=False)
-    prg.add(239432849, "Picture Na_3Gdet_offset", enable=False)
-    prg.add(239432849, "Picture Na_4Gdet_offset", enable=False)
-    prg.add(244432849, "Initialize_Dipole_Off", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
-    prg.add(244437849, "Set MOT", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
+    prg.add(239354349, "IGBT BCompY field CLOSE")
+    prg.add(239354849, "BCompY current ramp", start_t=0, stop_x=10, n_points=30, start_x=0, stop_t=49)
+    prg.add(239694849, "MT Current Ramp", start_t=0, stop_x=15, n_points=20, start_x=3.5, stop_t=15)
+    prg.add(239854349, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
+    prg.add(240304349, "Swich Off Dipole")
+    prg.add(240305849, "DAC BCompZ", 0.2400, functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False), enable=False)
+    prg.add(240355849, "Picture Na_Shortrepumper_offset", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False), enable=False)
+    prg.add(240355849, "Picture Na_2Gdet_offset", enable=False)
+    prg.add(240355849, "Picture Na_1Gdet_offset", enable=False)
+    prg.add(240435849, "Picture Na_offset")
+    prg.add(240435849, "Picture Na_Shortrepumper_offset", enable=False)
+    prg.add(240435849, "Picture Na_3Gdet_offset", enable=False)
+    prg.add(240435849, "Picture Na_4Gdet_offset", enable=False)
+    prg.add(245435849, "Initialize_Dipole_Off", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
+    prg.add(245445849, "IGBT BCompY field OPEN")
+    prg.add(245450849, "Set MOT", functions=dict(time=lambda x: x + cmd.get_var('dt'), funct_enable=False))
     return prg
-def commands(cmd):
-    import numpy as np
-    iters = np.arange(0, 18000, 1000)
-    j = 0
-    while(cmd.running):
-        dt1 = iters[j]
-        cmd.set_var('dt', dt1)
-        print('\n-------o-------')
-        print('Run #%d/%d, with variables:\ndt = %g\n'%(j+1, len(iters), dt1))
-        cmd.run(wait_end=True, add_time=750)
-        j += 1
-        if j == len(iters):
-            cmd.stop()
-    return cmd

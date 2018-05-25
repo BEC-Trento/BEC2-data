@@ -9,7 +9,7 @@ def program(prg, cmd):
     prg.add(-3010000, "Shutter RepumperMOT ON")
     prg.add(-4000, "IGBT BCompY field CLOSE")
     prg.add(-3500, "DAC BCompY", 0.5000)
-    prg.add(-3000, "AOM Probe Detuning", 30.000)
+    prg.add(-3000, "AOM Probe Detuning", 40.000)
     prg.add(-2200, "AOM DS + RepumperMOT Amp ", 1000)
     prg.add(-2000, "AOM DS + RepumperMOT Freq", 408.00)
     prg.add(-1700, "TTL Repumper MOT  ON")
