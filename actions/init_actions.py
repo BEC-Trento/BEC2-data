@@ -303,6 +303,47 @@ def action_list_init(act_lst):
                 categories=["actions", "DDS"],
                 comment="CH1 0 to 1000, CH2 free")
 
+
+
+    act_lst.add("DDS 64 Ch1 Frequency", lib_action.DdsAction,
+                board="DDS64",
+                parameters=dict(channel=1),
+                variables=dict(frequency=0),
+                var_formats=dict(frequency="%.2f"),
+                categories=["actions", "DDS"],
+                comment="120-318 (0.5) MHz")
+    act_lst.add("DDS 64 Ch1 Amplitude", lib_action.DdsAction,
+                board="DDS64",
+                parameters=dict(channel=1),
+                variables=dict(amplitude=0),
+                var_formats=dict(amplitude="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
+
+    act_lst.add("DDS 64 Ch2 Frequency", lib_action.DdsAction,
+                board="DDS64",
+                parameters=dict(channel=2),
+                variables=dict(frequency=0),
+                var_formats=dict(frequency="%.2f"),
+                categories=["actions", "DDS"],
+                comment="120-318 (0.5) MHz")
+    act_lst.add("DDS 64 Ch2 Amplitude", lib_action.DdsAction,
+                board="DDS64",
+                parameters=dict(channel=2),
+                variables=dict(amplitude=0),
+                var_formats=dict(amplitude="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
+
+    act_lst.add("DDS64 LUT", lib_action.DdsAction,
+                board="DDS64",
+                parameters=dict(),
+                variables=dict(n_lut=0),
+                var_formats=dict(n_lut="%d"),
+                categories=["actions", "DDS"],
+                comment="LUT")
+
+
 ###TTL###
 
 

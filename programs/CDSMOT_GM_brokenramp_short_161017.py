@@ -15,21 +15,19 @@ def program(prg, cmd):
     prg.add(135111849, "Picture Na_2Gdet_offset", enable=False)
     prg.add(135111849, "Picture Na_offset", enable=False)
     prg.add(135111849, "Picture Na_3Gdet_offset", enable=False)
-    prg.add(135261849, "Picture Na_4Gdet_offset")
-    prg.add(139367448, "Set MOT")
+    prg.add(135311849, "Picture Na_4Gdet_offset", functions=dict(time=lambda x: x + cmd.get_var('time'), funct_enable=False))
+    prg.add(139417448, "Set MOT")
     return prg
 def commands(cmd):
     import numpy as np
-    pulse_arr, dummy_arr = np.mgrid[0.0025:0.2:0.0075, 0:3:1, ]
-    iters = list(zip(pulse_arr.ravel(), dummy_arr.ravel()))
+    iters = np.arange(2, 18, 3)
     j = 0
     while(cmd.running):
-        pulse1, dummy1 = iters[j]
-        cmd.set_var('pulse', pulse1)
-        cmd.set_var('dummy', dummy1)
+        time1 = iters[j]
+        cmd.set_var('time', time1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\npulse = %g\ndummy = %g\n'%(j+1, len(iters), pulse1, dummy1))
-        cmd.run(wait_end=True, add_time=1000)
+        print('Run #%d/%d, with variables:\ntime = %g\n'%(j+1, len(iters), time1))
+        cmd.run(wait_end=True, add_time=10000)
         j += 1
         if j == len(iters):
             cmd.stop()

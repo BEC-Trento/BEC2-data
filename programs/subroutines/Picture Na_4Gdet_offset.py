@@ -18,7 +18,7 @@ def program(prg, cmd):
     prg.add(-300, "TTL Picture  ON")
     prg.add(-100, "Oscilloscope Trigger ON")
     prg.add(100, "AOM Probe Amp ch1 (+)", 1000)
-    prg.add(500, "AOM Probe Amp ch2 (-)", 900)
+    prg.add(500, "AOM Probe Amp ch2 (-)", 1000)
     prg.add(1500, "AOM Probe Amp ch2 (-)", 1)
     prg.add(1900, "AOM Probe Amp ch1 (+)", 1)
     prg.add(2300, "TTL Picture OFF")

@@ -2,6 +2,7 @@ prg_comment = ""
 prg_version = "0.5.1"
 def program(prg, cmd):
     prg.add(-3000000, "Shutter Gray Molasses OFF")
+    prg.add(-2990000, "Shutter RepumperMOT OFF", enable=False)
     prg.add(500, "AOM Zeeman Slower Amp", 1000)
     prg.add(1000, "TTL Repumper MOT OFF", enable=False)
     prg.add(1500, "DAC 3DMOT Coils Current", 6.0000)
@@ -24,6 +25,7 @@ def program(prg, cmd):
     prg.add(54500, "AOM Repumper freq", 225.00)
     prg.add(57500, "AOM DS + RepumperMOT Freq", 406.00)
     prg.add(60500, "TTL Dark Spot ON")
+    prg.add(61000, "TTL Repumper MOT  ON", enable=False)
     prg.add(63500, "shutter MOT open")
     prg.add(66500, "Config Field MOT")
     prg.add(72500, "AOM GM Detuning", 40.000)

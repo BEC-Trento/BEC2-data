@@ -12,8 +12,8 @@ def program(prg, cmd):
     prg.add(135060849, "GM FullSequence_Short", enable=False)
     prg.add(135060849, "GM BrokenRamp_Short", enable=False)
     prg.add(135070849, "Picture Na_2Gdet_offset", enable=False)
-    prg.add(135070849, "Picture Na_3Gdet_offset")
-    prg.add(135080849, "Picture Na_4Gdet_offset", enable=False)
+    prg.add(135070849, "Picture Na_3Gdet_offset", enable=False)
+    prg.add(135080849, "Picture Na_4Gdet_offset")
     prg.add(135080849, "Picture Na_Shortrepumper_offset", enable=False)
     prg.add(139186448, "Set MOT")
     return prg

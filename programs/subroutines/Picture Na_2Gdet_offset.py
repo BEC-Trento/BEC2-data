@@ -16,6 +16,7 @@ def program(prg, cmd):
     prg.add(-1300, "TTL Repumper MOT OFF")
     prg.add(-1250, "AOM DS + RepumperMOT Amp ", 1)
     prg.add(-300, "TTL Picture  ON")
+    prg.add(50, "Oscilloscope Trigger ON")
     prg.add(100, "AOM Probe Amp ch1 (+)", 1000)
     prg.add(500, "AOM Probe Amp ch2 (-)", 900)
     prg.add(1500, "AOM Probe Amp ch2 (-)", 1)
@@ -33,4 +34,5 @@ def program(prg, cmd):
     prg.add(2012100, "TTL Picture OFF")
     prg.add(3010100, "TTL Picture  ON")
     prg.add(3012900, "TTL Picture OFF")
+    prg.add(3020000, "Oscilloscope Trigger OFF")
     return prg
