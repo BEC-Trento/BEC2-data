@@ -50,14 +50,16 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(2, 18, 3)
+    hold_arr, dummy_arr = np.mgrid[2.65:10:0.2, 0:3:1, ]
+    iters = list(zip(hold_arr.ravel(), dummy_arr.ravel()))
     j = 0
     while(cmd.running):
-        time1 = iters[j]
-        cmd.set_var('time', time1)
+        hold1, dummy1 = iters[j]
+        cmd.set_var('hold', hold1)
+        cmd.set_var('dummy', dummy1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\ntime = %g\n'%(j+1, len(iters), time1))
-        cmd.run(wait_end=True, add_time=10000)
+        print('Run #%d/%d, with variables:\nhold = %g\ndummy = %g\n'%(j+1, len(iters), hold1, dummy1))
+        cmd.run(wait_end=True, add_time=1000)
         j += 1
         if j == len(iters):
             cmd.stop()

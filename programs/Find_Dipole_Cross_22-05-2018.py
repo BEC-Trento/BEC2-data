@@ -10,7 +10,7 @@ def program(prg, cmd):
     prg.add(5181000, "DAC Horiz IR", 5.4000)
     prg.add(5181500, "DAC Vert IR", 6.0000)
     prg.add(5182000, "AOM IR Horizontal freq", 80.00)
-    prg.add(5182500, "AOM IR Vertical freq", 80.00)
+    prg.add(5182500, "AOM IR Vertical freq", 80.00, enable=False)
     prg.add(145082000, "Bright_Compressed_MOT", enable=False)
     prg.add(145090000, "switch off MOT _ Depumper ", enable=False)
     prg.add(145090000, "switch off MOT fast")
@@ -40,15 +40,15 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    pulse_arr, dummy_arr = np.mgrid[0.0025:0.2:0.0075, 0:3:1, ]
-    iters = list(zip(pulse_arr.ravel(), dummy_arr.ravel()))
+    dummy_arr, pulse_arr = np.mgrid[0:5:1, 0.005:0.05:0.005, ]
+    iters = list(zip(dummy_arr.ravel(), pulse_arr.ravel()))
     j = 0
     while(cmd.running):
-        pulse1, dummy1 = iters[j]
-        cmd.set_var('pulse', pulse1)
+        dummy1, pulse1 = iters[j]
         cmd.set_var('dummy', dummy1)
+        cmd.set_var('pulse', pulse1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\npulse = %g\ndummy = %g\n'%(j+1, len(iters), pulse1, dummy1))
+        print('Run #%d/%d, with variables:\ndummy = %g\npulse = %g\n'%(j+1, len(iters), dummy1, pulse1))
         cmd.run(wait_end=True, add_time=1000)
         j += 1
         if j == len(iters):

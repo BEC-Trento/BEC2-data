@@ -596,12 +596,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[7], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL 2 Ch8 ON", lib_action.DigitalAction,
+    act_lst.add("TTL Dipole Shaking ON", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[8], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL 2 Ch8 OFF", lib_action.DigitalAction,
+    act_lst.add("TTL Dipole Shaking OFF", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[8], status=[False]),
 		categories=["actions", "TTL"])

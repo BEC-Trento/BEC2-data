@@ -27,7 +27,7 @@ def program(prg, cmd):
     prg.add(302034849, "Synchronize.sub")
     prg.add(302134849, "DAC Magnetic Trap Voltage", 6.5000, enable=False)
     prg.add(302149849, "Landau_Zener_NoBComp")
-    prg.add(304164849, "wait", functions=dict(time=lambda x: x + 200+cmd.get_var('hold'), funct_enable=False), enable=False)
+    prg.add(304164849, "wait", enable=False)
     prg.add(304164849, "Decompress_cross", enable=False)
     prg.add(304164849, "wait", enable=False)
     prg.add(304164863, "Picture_Levit_2018")
@@ -48,3 +48,19 @@ def program(prg, cmd):
     prg.add(320242075, "Initialize_Dipole_Off")
     prg.add(320247075, "Set MOT")
     return prg
+def commands(cmd):
+    import numpy as np
+    dummy_arr, pulse_arr = np.mgrid[0:3:1, 5:5.1:0.005, ]
+    iters = list(zip(dummy_arr.ravel(), pulse_arr.ravel()))
+    j = 0
+    while(cmd.running):
+        dummy1, pulse1 = iters[j]
+        cmd.set_var('dummy', dummy1)
+        cmd.set_var('pulse', pulse1)
+        print('\n-------o-------')
+        print('Run #%d/%d, with variables:\ndummy = %g\npulse = %g\n'%(j+1, len(iters), dummy1, pulse1))
+        cmd.run(wait_end=True, add_time=1000)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd
