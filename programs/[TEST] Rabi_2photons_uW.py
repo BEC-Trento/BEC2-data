@@ -31,12 +31,22 @@ def program(prg, cmd):
     prg.add(302244849, "Landau_Zener_-1to+1", enable=False)
     prg.add(302244849, "Landau_Zener_NoBComp", enable=False)
     prg.add(304194849, "wait", enable=False)
-    prg.add(304556349, "DAC BCompZ", 0.9650, functions=dict(value=lambda x: cmd.get_var('bz'), funct_enable=False))
-    prg.add(304756349, "DAC BComp1", 0.0000, enable=False)
+    prg.add(304204849, "DAC BComp1", 0.7500)
+    prg.add(304205349, "DAC BComp2", 0.0000)
+    prg.add(304255349, "DAC BCompZ", 0.0000)
+    prg.add(304355349, "Relay BCompZ Normal", enable=False)
+    prg.add(304355349, "Relay BCompZ Invert", enable=False)
+    prg.add(304405349, "IGBT Bcompz field OPEN", enable=False)
+    prg.add(304555349, "IGBT BCompz field CLOSE", enable=False)
+    prg.add(304556349, "DAC BCompZ", 0.9650, functions=dict(value=lambda x: cmd.get_var('bz'), funct_enable=False), enable=False)
+    prg.add(304756349, "DAC BComp1", 0.0000)
     prg.add(304757349, "DAC BComp2", 0.2250, enable=False)
+    prg.add(305757349, "IGBT Bcomp2 field OPEN")
+    prg.add(305758349, "IGBT Bcomp1 field OPEN")
+    prg.add(305759349, "IGBT Bcompz field OPEN")
     prg.add(305759849, "Config field OFF")
     prg.add(306759849, "Synchronize.sub")
-    prg.add(306964849, "uW ON", functions=dict(time=lambda x: x - cmd.get_var('pulse'), funct_enable=False))
+    prg.add(306959849, "uW ON")
     prg.add(306969849, "uW OFF", functions=dict(time=lambda x: x+cmd.get_var('time'), funct_enable=False))
     prg.add(306974849, "Picture_Levit_2018", functions=dict(time=lambda x: x+cmd.get_var('time'), funct_enable=False))
     prg.add(306974849, "TESTBCompY_Picture_Levit_2018", enable=False)
@@ -58,3 +68,19 @@ def program(prg, cmd):
     prg.add(323082061, "Initialize_Dipole_Off")
     prg.add(323087061, "Set MOT")
     return prg
+def commands(cmd):
+    import numpy as np
+    dummy_arr, time_arr = np.mgrid[0:5:1, 0.2:30:2, ]
+    iters = list(zip(dummy_arr.ravel(), time_arr.ravel()))
+    j = 0
+    while(cmd.running):
+        dummy1, time1 = iters[j]
+        cmd.set_var('dummy', dummy1)
+        cmd.set_var('time', time1)
+        print('\n-------o-------')
+        print('Run #%d/%d, with variables:\ndummy = %g\ntime = %g\n'%(j+1, len(iters), dummy1, time1))
+        cmd.run(wait_end=True, add_time=100)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd

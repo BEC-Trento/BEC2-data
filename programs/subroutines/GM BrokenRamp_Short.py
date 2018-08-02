@@ -16,5 +16,5 @@ def program(prg, cmd):
     prg.add(10049500, "AOM GM Amp ch1 (+)", 1000)
     prg.add(10059500, "AOM GM Amp ch2 (-)", 1000)
     prg.add(10069500, "TTL GM Repumper ON", enable=False)
-    prg.add(10069500, "TTL GM Repumper OFF")
+    prg.add(10069500, "TTL GM Repumper OFF", enable=False)
     return prg

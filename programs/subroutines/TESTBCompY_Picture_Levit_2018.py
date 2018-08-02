@@ -12,7 +12,7 @@ def program(prg, cmd):
     prg.add(0, "Config Field Unif to Levit")
     prg.add(500, "Oscilloscope Trigger ON")
     prg.add(1500, "DAC Magnetic Trap current", 9.5000)
-    prg.add(2000, "IGBT BCompY field CLOSE")
+    prg.add(2000, "IGBT BCompY field CLOSE", enable=False)
     prg.add(2500, "BCompY current ramp", start_t=0, stop_x=10, n_points=10, start_x=0, stop_t=10)
     prg.add(10000, "IGBT Bcompz field OPEN")
     prg.add(20000, "IGBT BCompz field CLOSE")

@@ -27,38 +27,38 @@ def program(prg, cmd):
     prg.add(302034849, "Synchronize.sub")
     prg.add(302134849, "DAC Magnetic Trap Voltage", 6.5000, enable=False)
     prg.add(302149849, "Landau_Zener_NoBComp")
-    prg.add(304150849, "wait", functions=dict(time=lambda x: x +cmd.get_var('hold')), enable=False)
-    prg.add(304150849, "Decompress_cross", enable=False)
-    prg.add(304150849, "wait", enable=False)
-    prg.add(304150863, "Picture_Levit_2018", functions=dict(time=lambda x: x + cmd.get_var('hold')))
-    prg.add(304200863, "TESTBCompY_Picture_Levit_2018", enable=False)
-    prg.add(304200863, "Picture MT to Levit at 0ms - Levit 50 ms", enable=False)
-    prg.add(304202063, "Swich Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold')))
-    prg.add(304203763, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('t1'), funct_enable=False), enable=False)
-    prg.add(304205075, "Picture Na_Shortrepumper_offset", enable=False)
-    prg.add(304205075, "Picture Na_2Gdet_offset", enable=False)
-    prg.add(304205075, "Picture Na_1Gdet_offset", enable=False)
-    prg.add(304208075, "Picture Na_offset", functions=dict(time=lambda x: x + cmd.get_var('t1'), funct_enable=False), enable=False)
-    prg.add(304208075, "Picture Na_Shortrepumper_offset", enable=False)
-    prg.add(304208075, "Picture Na_3Gdet_offset", enable=False)
-    prg.add(304208075, "Picture Na_4Gdet_offset", enable=False)
-    prg.add(314208075, "Relay BCompZ Normal")
-    prg.add(314218075, "IGBT BComp1 field CLOSE")
-    prg.add(314228075, "IGBT BComp2 field CLOSE")
-    prg.add(329228075, "Initialize_Dipole_Off")
-    prg.add(329233075, "Set MOT")
+    prg.add(304151849, "wait", functions=dict(time=lambda x: x +cmd.get_var('hold')))
+    prg.add(304151849, "Decompress_cross", enable=False)
+    prg.add(304151849, "wait", enable=False)
+    prg.add(304151863, "Picture_Levit_2018", functions=dict(time=lambda x: x + cmd.get_var('hold')))
+    prg.add(304151863, "TESTBCompY_Picture_Levit_2018", enable=False)
+    prg.add(304151863, "Picture MT to Levit at 0ms - Levit 50 ms", enable=False)
+    prg.add(304153063, "Swich Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold')))
+    prg.add(304154763, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('t1'), funct_enable=False), enable=False)
+    prg.add(304156075, "Picture Na_Shortrepumper_offset", enable=False)
+    prg.add(304156075, "Picture Na_2Gdet_offset", enable=False)
+    prg.add(304156075, "Picture Na_1Gdet_offset", enable=False)
+    prg.add(304159075, "Picture Na_offset", functions=dict(time=lambda x: x + cmd.get_var('t1'), funct_enable=False), enable=False)
+    prg.add(304159075, "Picture Na_Shortrepumper_offset", enable=False)
+    prg.add(304159075, "Picture Na_3Gdet_offset", enable=False)
+    prg.add(304159075, "Picture Na_4Gdet_offset", enable=False)
+    prg.add(314159075, "Relay BCompZ Normal")
+    prg.add(314169075, "IGBT BComp1 field CLOSE")
+    prg.add(314179075, "IGBT BComp2 field CLOSE")
+    prg.add(329179075, "Initialize_Dipole_Off")
+    prg.add(329184075, "Set MOT")
     return prg
 def commands(cmd):
     import numpy as np
-    hold_arr, dummy_arr = np.mgrid[1:101:10, 0:5:1, ]
-    iters = list(zip(hold_arr.ravel(), dummy_arr.ravel()))
+    dummy_arr, hold_arr = np.mgrid[0:3:1, 0:10:0.5, ]
+    iters = list(zip(dummy_arr.ravel(), hold_arr.ravel()))
     j = 0
     while(cmd.running):
-        hold1, dummy1 = iters[j]
-        cmd.set_var('hold', hold1)
+        dummy1, hold1 = iters[j]
         cmd.set_var('dummy', dummy1)
+        cmd.set_var('hold', hold1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\nhold = %g\ndummy = %g\n'%(j+1, len(iters), hold1, dummy1))
+        print('Run #%d/%d, with variables:\ndummy = %g\nhold = %g\n'%(j+1, len(iters), dummy1, hold1))
         cmd.run(wait_end=True, add_time=100)
         j += 1
         if j == len(iters):

@@ -36,7 +36,7 @@ def program(prg, cmd):
     prg.add(304757349, "DAC BComp2", 0.2250, enable=False)
     prg.add(305759849, "Config field OFF")
     prg.add(306759849, "Synchronize.sub")
-    prg.add(306964849, "uW ON", functions=dict(time=lambda x: x - cmd.get_var('pulse'), funct_enable=False))
+    prg.add(306969849, "uW ON", functions=dict(time=lambda x: x - cmd.get_var('pulse')))
     prg.add(306969849, "uW OFF", functions=dict(time=lambda x: x+cmd.get_var('time'), funct_enable=False))
     prg.add(306974849, "Picture_Levit_2018", functions=dict(time=lambda x: x+cmd.get_var('time'), funct_enable=False))
     prg.add(306974849, "TESTBCompY_Picture_Levit_2018", enable=False)
@@ -58,3 +58,17 @@ def program(prg, cmd):
     prg.add(323082061, "Initialize_Dipole_Off")
     prg.add(323087061, "Set MOT")
     return prg
+def commands(cmd):
+    import numpy as np
+    iters = np.arange(0.2, 19, 2)
+    j = 0
+    while(cmd.running):
+        pulse1 = iters[j]
+        cmd.set_var('pulse', pulse1)
+        print('\n-------o-------')
+        print('Run #%d/%d, with variables:\npulse = %g\n'%(j+1, len(iters), pulse1))
+        cmd.run(wait_end=True, add_time=100)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd
