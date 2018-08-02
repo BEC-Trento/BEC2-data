@@ -279,6 +279,7 @@ def action_list_init(act_lst):
                 categories=["actions", "DDS"],
                 comment="LUT")
 
+# Remove when not needed
     act_lst.add("RF Evaporation", lib_action.DdsAction,
                 board="DDS38",
                 parameters=dict(),
@@ -286,7 +287,16 @@ def action_list_init(act_lst):
                 var_formats=dict(n_lut="%d"),
                 categories=["actions", "DDS"],
                 comment="LUT")
-   
+
+# This copy is needed for compatibility with evaporation ramps widget
+    act_lst.add("Evaporation", lib_action.DdsAction,
+                board="DDS38",
+                parameters=dict(),
+                variables=dict(n_lut=0),
+                var_formats=dict(n_lut="%d"),
+                categories=["actions", "DDS"],
+                comment="LUT")
+
     act_lst.add("RF Landau-Zener LUT", lib_action.DdsAction,
                 board="DDS39",
                 parameters=dict(),
@@ -302,47 +312,6 @@ def action_list_init(act_lst):
                 var_formats=dict(amplitude="%.3f"),
                 categories=["actions", "DDS"],
                 comment="CH1 0 to 1000, CH2 free")
-
-
-
-    act_lst.add("DDS 64 Ch1 Frequency", lib_action.DdsAction,
-                board="DDS64",
-                parameters=dict(channel=1),
-                variables=dict(frequency=0),
-                var_formats=dict(frequency="%.2f"),
-                categories=["actions", "DDS"],
-                comment="120-318 (0.5) MHz")
-    act_lst.add("DDS 64 Ch1 Amplitude", lib_action.DdsAction,
-                board="DDS64",
-                parameters=dict(channel=1),
-                variables=dict(amplitude=0),
-                var_formats=dict(amplitude="%d"),
-                categories=["actions", "DDS"],
-                comment="1,10,20,...1000")
-
-    act_lst.add("DDS 64 Ch2 Frequency", lib_action.DdsAction,
-                board="DDS64",
-                parameters=dict(channel=2),
-                variables=dict(frequency=0),
-                var_formats=dict(frequency="%.2f"),
-                categories=["actions", "DDS"],
-                comment="120-318 (0.5) MHz")
-    act_lst.add("DDS 64 Ch2 Amplitude", lib_action.DdsAction,
-                board="DDS64",
-                parameters=dict(channel=2),
-                variables=dict(amplitude=0),
-                var_formats=dict(amplitude="%d"),
-                categories=["actions", "DDS"],
-                comment="1,10,20,...1000")
-
-    act_lst.add("DDS64 LUT", lib_action.DdsAction,
-                board="DDS64",
-                parameters=dict(),
-                variables=dict(n_lut=0),
-                var_formats=dict(n_lut="%d"),
-                categories=["actions", "DDS"],
-                comment="LUT")
-
 
 ###TTL###
 
@@ -596,12 +565,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[7], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL Dipole Shaking ON", lib_action.DigitalAction,
+    act_lst.add("TTL 2 Ch8 ON", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[8], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL Dipole Shaking OFF", lib_action.DigitalAction,
+    act_lst.add("TTL 2 Ch8 OFF", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[8], status=[False]),
 		categories=["actions", "TTL"])
