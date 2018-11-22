@@ -1,0 +1,65 @@
+prg_comment = ""
+prg_version = "0.7"
+def program(prg, cmd):
+    prg.add(0, "IGBT BCompZfine OPEN")
+    prg.add(50000, "Config field OFF")
+    prg.add(100000, "Initialize 0 TTL and Synchronize.sub")
+    prg.add(115800, "Initialize_Dipole_Lowpower", enable=False)
+    prg.add(165800, "Switch Off MOT")
+    prg.add(5175800, "Set_BrightMOT", enable=False)
+    prg.add(5175800, "Set_MOT")
+    prg.add(15175800, "Switch Off MOT")
+    prg.add(15178900, "DAC MT-MOT Current", 55.0000)
+    prg.add(15179400, "DAC MT-MOT Voltage", 4.0000)
+    prg.add(15182500, "GM_051018")
+    prg.add(15232500, "wait")
+    prg.add(15233500, "Config Field MT-MOT")
+    prg.add(15235500, "DAC Horiz IR", 5.4000)
+    prg.add(15236500, "AOM IR Horizontal freq", 80.00)
+    prg.add(15237500, "AOM IR Horizontal Amp", 1000)
+    prg.add(40237500, "MT Current Ramp", start_t=0, stop_x=18, n_points=100, start_x=55, stop_t=300)
+    prg.add(44237500, "Horizontal Dipole Evaporation Ramp 10_2018")
+    prg.add(76737500, "[VOID] End Evaporation")
+    prg.add(76837500, "Relay BCompZ Invert")
+    prg.add(77037500, "IGBT BCompz CLOSE")
+    prg.add(77047500, "DAC BCompZ", 1.0000)
+    prg.add(77547500, "MT_to_Hor_Dipole_Cigar_Transfer_102018")
+    prg.add(97647500, "IGBT BCompZfine CLOSE")
+    prg.add(97648000, "BCompZ current ramp", start_t=0, stop_x=0, n_points=100, start_x=1, stop_t=10)
+    prg.add(99648000, "IGBT Bcompz OPEN")
+    prg.add(100648000, "Synchronize.sub")
+    prg.add(100948000, "uW ON")
+    prg.add(100949200, "uW OFF", functions=dict(time=lambda x: x +cmd.get_var('tpulse'), funct_enable=False))
+    prg.add(100949700, "IGBT BCompz CLOSE")
+    prg.add(102949700, "BCompZ current ramp", start_t=0, stop_x=1, n_points=100, start_x=0, stop_t=10)
+    prg.add(103149700, "IGBT BCompZfine OPEN")
+    prg.add(103249700, "Oscilloscope Trigger ON", functions=dict(time=lambda x: x + cmd.get_var('tpulse'), funct_enable=False))
+    prg.add(103250200, "Picture Levit_SG at 0ms - Levit 20 ms 10_2018", enable=False)
+    prg.add(103250200, "Picture Levit_SG at 0ms - Levit 10 ms 10_2018", functions=dict(time=lambda x: x + cmd.get_var('tpulse'), funct_enable=False))
+    prg.add(103251800, "Swich Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('tpulse'), funct_enable=False))
+    prg.add(103252309, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('tpulse'), funct_enable=False))
+    prg.add(103452309, "Picture Na_4Gdet", functions=dict(time=lambda x: x + cmd.get_var('TOF'), funct_enable=False), enable=False)
+    prg.add(103452309, "Picture Na_4Gdet_hamamatsu", enable=False)
+    prg.add(103452309, "Picture Na_resonant_hamamatsu", enable=False)
+    prg.add(103452309, "Picture Na_uW_Probe_hamamatsu", enable=False)
+    prg.add(103452309, "Picture Na_2Gdet", enable=False)
+    prg.add(103452309, "Picture Na_1Gdet", enable=False)
+    prg.add(103452309, "Picture Na_0Gdet", enable=False)
+    prg.add(103952309, "IGBT BCompZfine OPEN")
+    prg.add(108952309, "Set_MOT")
+    prg.add(108952309, "Set_BrightMOT", enable=False)
+    return prg
+def commands(cmd):
+    import numpy as np
+    iters = np.arange(0.1, 10, 1)
+    j = 0
+    while(cmd.running):
+        tpulse1 = iters[j]
+        cmd.set_var('tpulse', tpulse1)
+        print('\n-------o-------')
+        print('Run #%d/%d, with variables:\ntpulse = %g\n'%(j+1, len(iters), tpulse1))
+        cmd.run(wait_end=True, add_time=1000)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd

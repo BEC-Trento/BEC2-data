@@ -1,0 +1,28 @@
+prg_comment = ""
+prg_version = "0.7"
+def program(prg, cmd):
+    prg.add(0, "AOM Zeeman Slower Amp", 1000)
+    prg.add(1000, "DAC MT-MOT Current", 33.0000)
+    prg.add(2000, "DAC MT-MOT Voltage", 10.0000)
+    prg.add(3000, "Compensate_external_Mag_Field")
+    prg.add(5500, "shutter Bright MOT open")
+    prg.add(6000, "AOM Zeeman Slower freq", 170.00)
+    prg.add(9000, "AOM Probe Amp ch1 (+)", 1000)
+    prg.add(12000, "AOM Probe Amp ch2 (-)", 1000)
+    prg.add(18000, "AOM 2DMOT Amp ch1 (+)", 1000)
+    prg.add(21000, "AOM 2DMOT Amp ch2 (-)", 1000)
+    prg.add(24000, "AOM 2DMOT Detuning", -13.000)
+    prg.add(27000, "AOM 3DMOT Amp ch1 (+)", 1000)
+    prg.add(30000, "AOM 3DMOT Amp ch2 (-)", 1000)
+    prg.add(33000, "AOM 3DMOT Detuning", -18.000)
+    prg.add(36000, "AOM Push Amp ch1 (+)", 175)
+    prg.add(39000, "AOM Push Amp ch2 (-)", 200)
+    prg.add(42000, "AOM Push Detuning", 12.000)
+    prg.add(45000, "TTL Repumper MOT  ON")
+    prg.add(48000, "AOM Repumper Amp", 1000)
+    prg.add(51000, "TTL Dark spot OFF")
+    prg.add(54000, "AOM Repumper freq", 225.00)
+    prg.add(57000, "AOM DS + RepumperMOT Amp ", 1000)
+    prg.add(60000, "AOM DS + RepumperMOT Freq", 406.00)
+    prg.add(61000, "Config Field MT-MOT")
+    return prg
