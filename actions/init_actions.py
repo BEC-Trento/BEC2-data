@@ -347,12 +347,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[1], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL 1 ch2 OFF", lib_action.DigitalAction,
+    act_lst.add("IGBT BCompZfine OPEN", lib_action.DigitalAction,
 		board="TTL1",
 		parameters=dict(channel=[2], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL 1 ch2 ON", lib_action.DigitalAction,
+    act_lst.add("IGBT BCompZfine CLOSE", lib_action.DigitalAction,
 		board="TTL1",
 		parameters=dict(channel=[2], status=[True]),
 		categories=["actions", "TTL"])
@@ -401,12 +401,12 @@ def action_list_init(act_lst):
 
     act_lst.add("IGBT MOT field OPEN", lib_action.EmptyAction)
 
-    act_lst.add("IGBT BCompX field CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT BCompX CLOSE", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[7], status=[True]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT BcompX field OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT BcompX OPEN", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[7], status=[False]),
                 categories=["actions", "TTL"])
@@ -415,12 +415,12 @@ def action_list_init(act_lst):
 
     act_lst.add("IGBT Bcomp1 field OPEN", lib_action.EmptyAction)
 
-    act_lst.add("IGBT BCompY field CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT BCompY CLOSE", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[8], status=[True]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT BcompY field OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT BcompY OPEN", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[8], status=[False]),
                 categories=["actions", "TTL"])
@@ -430,12 +430,12 @@ def action_list_init(act_lst):
     act_lst.add("IGBT Bcomp2 field OPEN", lib_action.EmptyAction)
 
 
-    act_lst.add("IGBT BCompz field CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT BCompz CLOSE", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[9], status=[True]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT Bcompz field OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT Bcompz OPEN", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[9], status=[False]),
                 categories=["actions", "TTL"])
@@ -658,15 +658,15 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[15], status=[False]),
 		categories=["actions", "TTL"])
 
+#act_lst.add("Shutter Probe OFF", lib_action.EmptyAction)
+    act_lst.add("Shutter Probe ON", lib_action.EmptyAction)
 
-
-
-    act_lst.add("Shutter Probe ON", lib_action.DigitalAction,
+    act_lst.add("Shutter Probe Hor ON", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[10], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Shutter Probe OFF", lib_action.DigitalAction,
+    act_lst.add("Shutter Probe Hor OFF", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[10], status=[False]),
 		categories=["actions", "TTL"])
@@ -681,6 +681,76 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[13], status=[False]),
 		categories=["actions", "TTL"])
 
+
+    act_lst.add("Initialize 1 TTL3", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], status=[True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("Initialize 0 TTL3", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], status=[False, False, False, False, False, False, False, False, False, False, False, False, False, False, False,False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL Picture Hamamatsu  ON", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[1], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL Picture Hamamatsu OFF", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[1], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 1A CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[9], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 1A OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[9], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 2A CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[10], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 2A OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[10], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 1B CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[5], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 1B OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[5], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 2B CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[6], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 2B OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[6], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 3B CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[7], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("IGBT 3B OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[7], status=[False]),
+		categories=["actions", "TTL"])
 
 
 ###DAC####
@@ -741,8 +811,9 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
+    act_lst.add("DAC Magnetic Trap current", lib_action.EmptyAction)
 
-    act_lst.add("DAC Magnetic Trap current", lib_action.AnalogAction,
+    act_lst.add("DAC MT-MOT Current", lib_action.AnalogAction,
                 board="ANG17",
                 parameters=dict(),
                 variables=dict(value=0),
@@ -750,7 +821,9 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC Magnetic Trap Voltage", lib_action.AnalogAction,
+    act_lst.add("DAC Magnetic Trap Voltage", lib_action.EmptyAction)
+
+    act_lst.add("DAC MT-MOT Voltage", lib_action.AnalogAction,
                 board="ANG18",
                 parameters=dict(),
                 variables=dict(value=0),

@@ -126,6 +126,11 @@ def board_list_init(board_lst):
                   address=2,
                   comment="arbitrary board description")
 
+    board_lst.add("TTL3",
+                  lib_board.DigitalBoard,
+                  address=3,
+                  comment="arbitrary board description")
+
 
 ############   DAC    #################
 
