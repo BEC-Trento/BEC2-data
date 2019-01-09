@@ -3,6 +3,8 @@ prg_version = "0.7"
 def program(prg, cmd):
     prg.add(-3000000, "Shutter Gray Molasses OFF")
     prg.add(-2990000, "Shutter RepumperMOT OFF", enable=False)
+    prg.add(-2001000, "TTL Relay Upper Coil CLOSE")
+    prg.add(-2000000, "TTL Relay Lower Coil CLOSE")
     prg.add(500, "AOM Zeeman Slower Amp", 1000)
     prg.add(1000, "TTL Repumper MOT OFF", enable=False)
     prg.add(1500, "DAC MT-MOT Voltage", 5.0000)

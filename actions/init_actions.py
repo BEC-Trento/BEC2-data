@@ -377,12 +377,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[4], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("IGBT Magnetic Trap CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT 4B CLOSE", lib_action.DigitalAction,
 		board="TTL1",
 		parameters=dict(channel=[5], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("IGBT Magnetic Trap OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT 4B OPEN", lib_action.DigitalAction,
 		board="TTL1",
 		parameters=dict(channel=[5], status=[False]),
 		categories=["actions", "TTL"])
@@ -440,22 +440,22 @@ def action_list_init(act_lst):
                 parameters=dict(channel=[9], status=[False]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT Helm CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT 3A CLOSE", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[10], status=[True]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT Helm OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT 3A OPEN", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[10], status=[False]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT AntiHelm CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT 4A CLOSE", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[11], status=[True]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT AntiHelm OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT 4A OPEN", lib_action.DigitalAction,
                 board="TTL1",
                 parameters=dict(channel=[11], status=[False]),
                 categories=["actions", "TTL"])
@@ -470,15 +470,6 @@ def action_list_init(act_lst):
                 parameters=dict(channel=[12], status=[True]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("uW ON", lib_action.DigitalAction,
-                board="TTL1",
-                parameters=dict(channel=[13], status=[True]),
-                categories=["actions", "TTL"])
-
-    act_lst.add("uW OFF", lib_action.DigitalAction,
-                board="TTL1",
-                parameters=dict(channel=[13], status=[False]),
-                categories=["actions", "TTL"])
 
     act_lst.add("RF Landau-Zener ON", lib_action.DigitalAction,
 		        board="TTL1",
@@ -752,6 +743,96 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[7], status=[False]),
 		categories=["actions", "TTL"])
 
+    act_lst.add("TTL uW 3 ON", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[3], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 3 OFF", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[3], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 2 ON", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[4], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 2 OFF", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[4], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 2 FSK HIGH", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[8], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 2 FSK LOW", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[8], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 4 ON", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[11], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 4 OFF", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[11], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 1 FSK HIGH", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[12], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 1 FSK LOW", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[12], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL Relay Lower Coil CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[13], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL Relay Lower Coil OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[13], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL Relay Upper Coil CLOSE", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[14], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL Relay Upper Coil OPEN", lib_action.DigitalAction,
+		board="TTL3",
+		parameters=dict(channel=[14], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 1 (100W) ON", lib_action.DigitalAction,
+                board="TTL3",
+                parameters=dict(channel=[15], status=[True]),
+                categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW 1 (100W) OFF", lib_action.DigitalAction,
+                board="TTL3",
+                parameters=dict(channel=[15], status=[False]),
+                categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW coupling ON", lib_action.DigitalAction,
+                board="TTL3",
+                parameters=dict(channel=[4,15], status=[True,True]),
+                categories=["actions", "TTL"])
+
+    act_lst.add("TTL uW coupling OFF", lib_action.DigitalAction,
+                board="TTL3",
+                parameters=dict(channel=[4,15], status=[False,False]),
+                categories=["actions", "TTL"])
+
 
 ###DAC####
 
@@ -839,7 +920,7 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC BGradX", lib_action.AnalogAction,
+    act_lst.add("DAC uW 2/4 Power", lib_action.AnalogAction,
                 board="ANG20",
                 parameters=dict(),
                 variables=dict(value=0),

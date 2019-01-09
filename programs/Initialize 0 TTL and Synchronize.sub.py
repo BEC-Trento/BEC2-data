@@ -18,4 +18,6 @@ def program(prg, cmd):
     prg.add(30950, "BREAKPOINT")
     prg.add(31300, "NOP")
     prg.add(41300, "TTL Test Trigger ON", enable=False)
+    prg.add(1500000, "TTL Relay Upper Coil CLOSE")
+    prg.add(1501500, "TTL Relay Lower Coil CLOSE")
     return prg
