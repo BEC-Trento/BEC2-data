@@ -8,7 +8,7 @@ def program(prg, cmd):
     prg.add(-3013000, "Shutter Probe Hor ON")
     prg.add(-3012000, "Shutter Probe Vert ON")
     prg.add(-3010000, "Shutter RepumperMOT ON")
-    prg.add(-101199, "DAC BCompY", 0.1000)
+    prg.add(-102100, "DAC BCompY", 0.1000)
     prg.add(-99100, "IGBT BCompY CLOSE")
     prg.add(-5000, "AOM DS + RepumperMOT Amp ", 1000)
     prg.add(-3000, "AOM Probe Detuning", 0.000)

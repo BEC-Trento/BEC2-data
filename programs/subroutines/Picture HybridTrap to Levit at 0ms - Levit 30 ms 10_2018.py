@@ -1,6 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
+    prg.add(-3250000, "TTL MirrorBottom Probe")
     prg.add(-2805000, "Shutter RepumperMOT ON")
     prg.add(-2290000, "AOM Repumper Amp", 1000)
     prg.add(-2280000, "AOM Repumper freq", 225.00)

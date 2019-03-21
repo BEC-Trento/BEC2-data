@@ -15,7 +15,7 @@ def program(prg, cmd):
     prg.add(-2300, "TTL Picture Hamamatsu  ON")
     prg.add(-2000, "AOM DS + RepumperMOT Freq", 408.00)
     prg.add(-1700, "TTL Repumper MOT  ON")
-    prg.add(-1300, "TTL Repumper MOT OFF")
+    prg.add(-1300, "TTL Repumper MOT OFF", enable=False)
     prg.add(-1250, "AOM DS + RepumperMOT Amp ", 1)
     prg.add(-300, "TTL Picture  ON")
     prg.add(-100, "Oscilloscope Trigger ON", enable=False)

@@ -7,7 +7,6 @@ def program(prg, cmd):
     prg.add(52500, "DAC 3DMOT Coils Current", enable=False)
     prg.add(53000, "DAC Magnetic Trap Voltage")
     prg.add(53500, "DAC Magnetic Trap current")
-    prg.add(54000, "Compensate_external_Mag_Field", enable=False)
     prg.add(63000, "AOM Zeeman Slower freq", 170.00)
     prg.add(73000, "AOM Probe Amp ch1 (+)", 1000)
     prg.add(83000, "AOM Probe Amp ch2 (-)", 1000)
@@ -28,7 +27,6 @@ def program(prg, cmd):
     prg.add(233000, "TTL Dark Spot ON")
     prg.add(243000, "TTL Repumper MOT  ON")
     prg.add(253000, "All shutter open")
-    prg.add(263000, "Config Field MOT", enable=False)
     prg.add(263000, "Config Field MT-MOT")
     prg.add(273000, "AOM GM Amp ch1 (+)", 1000)
     prg.add(283000, "AOM GM Amp ch2 (-)", 1000)
@@ -37,13 +35,15 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(5, 50, 5)
+    iters = np.arange(0, 1, 1)
+    np.random.shuffle(iters)
     j = 0
     while(cmd.running):
-        tof1 = iters[j]
-        cmd.set_var('tof', tof1)
         print('\n-------o-------')
-        print('Run #%d/%d, with variables:\ntof = %g\n'%(j+1, len(iters), tof1))
+        x1 = iters[j]
+        cmd.set_var('x', x1)
+        print('\n')
+        print('Run #%d/%d, with variables:\nx = %g\n'%(j+1, len(iters), x1))
         cmd.run(wait_end=True, add_time=100)
         j += 1
         if j == len(iters):

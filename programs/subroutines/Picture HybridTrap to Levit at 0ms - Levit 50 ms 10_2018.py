@@ -1,6 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
+    prg.add(-3250000, "TTL MirrorBottom Probe")
     prg.add(-2805000, "Shutter RepumperMOT ON")
     prg.add(-2290000, "AOM Repumper Amp", 1000)
     prg.add(-2280000, "AOM Repumper freq", 225.00)
@@ -8,8 +9,8 @@ def program(prg, cmd):
     prg.add(-2270000, "AOM Probe Amp ch1 (+)", 1)
     prg.add(-2264000, "Shutter Probe Hor ON")
     prg.add(-2263000, "Shutter Probe Vert ON")
-    prg.add(0, "Config field MT-MOT to Levit")
-    prg.add(0, "Config field Levit", enable=False)
+    prg.add(0, "Config field MT-MOT to Levit", enable=False)
+    prg.add(0, "Config field Levit")
     prg.add(1500, "DAC MT-MOT Current", 42.0000)
     prg.add(100000, "DAC BCompY", 0.1000)
     prg.add(102000, "IGBT BCompY CLOSE")

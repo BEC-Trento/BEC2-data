@@ -7,12 +7,12 @@ def program(prg, cmd):
     prg.add(5075800, "Set_BrightMOT", enable=False)
     prg.add(5075800, "Set_MOT")
     prg.add(135075800, "Switch Off MOT")
-    prg.add(135078900, "DAC MT-MOT Current", 55.0000)
-    prg.add(135079400, "DAC MT-MOT Voltage", 7.5000)
+    prg.add(135078900, "DAC MT-MOT Current", 24.0000)
+    prg.add(135079400, "DAC MT-MOT Voltage", 6.0000)
     prg.add(135082500, "GM_051018")
     prg.add(135132500, "wait")
     prg.add(135133500, "Config Field MT-MOT")
-    prg.add(135135500, "DAC Horiz IR", 3.8000)
+    prg.add(135135500, "DAC Horiz IR", 4.0000)
     prg.add(135136500, "AOM IR Horizontal freq", 80.00)
     prg.add(135137500, "AOM IR Horizontal Amp", 1000)
     prg.add(195137500, "MT Current Ramp", start_t=0, stop_x=18, n_points=100, start_x=55, stop_t=300)
@@ -27,7 +27,8 @@ def program(prg, cmd):
     prg.add(232641300, "Swich Off Dipole", functions=dict(time=lambda x: x+ cmd.get_var('tof')))
     prg.add(232841300, "Picture Na_4Gdet", functions=dict(time=lambda x: x + cmd.get_var('TOF'), funct_enable=False), enable=False)
     prg.add(232841300, "Picture Na_4Gdet_hamamatsu", enable=False)
-    prg.add(232841300, "Picture Na_resonant_hamamatsu", functions=dict(time=lambda x: x+ cmd.get_var('tof')))
+    prg.add(232841300, "Picture Na_resonant_hamamatsu", functions=dict(time=lambda x: x+ cmd.get_var('tof')), enable=False)
+    prg.add(232841300, "Picture_Mirror_Na_resonant_hamamatsu", functions=dict(time=lambda x: x + cmd.get_var('tof')))
     prg.add(232841300, "Picture Na_2Gdet", enable=False)
     prg.add(232841300, "Picture Na_1Gdet", enable=False)
     prg.add(232841300, "Picture Na_0Gdet", enable=False)
@@ -36,12 +37,13 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(20, 500, 20)
+    iters = np.arange(1, 10, 0.5)
     j = 0
     while(cmd.running):
+        print('\n-------o-------')
         tof1 = iters[j]
         cmd.set_var('tof', tof1)
-        print('\n-------o-------')
+        print('\n')
         print('Run #%d/%d, with variables:\ntof = %g\n'%(j+1, len(iters), tof1))
         cmd.run(wait_end=True, add_time=100)
         j += 1

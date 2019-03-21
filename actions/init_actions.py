@@ -37,6 +37,22 @@ def action_list_init(act_lst):
                 categories=["actions", "DDS"],
                 comment="LUT")
 
+    act_lst.add("AOM IR Horiz_Ellipt freq", lib_action.DdsAction,
+                board="DDS39",
+                parameters=dict(channel=2),
+                variables=dict(frequency=0),
+                var_formats=dict(frequency="%.2f"),
+                categories=["actions", "DDS"],
+                comment="MHz")
+    act_lst.add("AOM IR Horiz_Ellipt Amp", lib_action.DdsAction,
+                board="DDS39",
+                parameters=dict(channel=2),
+                variables=dict(amplitude=0),
+                var_formats=dict(amplitude="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
+
+
     act_lst.add("AOM DS + RepumperMOT Amp ", lib_action.DdsAction,
                 board="DDS36",
                 parameters=dict(channel=1),
@@ -470,6 +486,16 @@ def action_list_init(act_lst):
                 parameters=dict(channel=[12], status=[True]),
                 categories=["actions", "TTL"])
 
+    act_lst.add("TTL MirrorBottom MOT", lib_action.DigitalAction,
+                board="TTL1",
+                parameters=dict(channel=[13], status=[False]),
+                categories=["actions", "TTL"])
+
+    act_lst.add("TTL MirrorBottom Probe", lib_action.DigitalAction,
+                board="TTL1",
+                parameters=dict(channel=[13], status=[True]),
+                categories=["actions", "TTL"])
+
 
     act_lst.add("RF Landau-Zener ON", lib_action.DigitalAction,
 		        board="TTL1",
@@ -628,12 +654,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[12], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Shutter 2D MOT/ZS ON", lib_action.DigitalAction,
+    act_lst.add("Shutter 2D MOT/ZS OFF", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[9], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Shutter 2D MOT/ZS OFF", lib_action.DigitalAction,
+    act_lst.add("Shutter 2D MOT/ZS ON", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[9], status=[False]),
 		categories=["actions", "TTL"])
@@ -912,7 +938,7 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC BGradY", lib_action.AnalogAction,
+    act_lst.add("DAC IR Horiz_Ellipt", lib_action.AnalogAction,
                 board="ANG19",
                 parameters=dict(),
                 variables=dict(value=0),

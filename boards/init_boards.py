@@ -58,8 +58,8 @@ def board_list_init(board_lst):
     board_lst.add("DDS39", lib_board.DdsBoard,
                   address=39,
                   parameters=dict(amp_to_lut={1: lambda x: int(max(min(x/10.0, 100),0)+400), \
-                                    2: lambda x: int(max(min(x/10.0, 100), 0)+900)}, \
-                                  freq_to_lut={}))
+                                    2: lambda x: (int(x)+4000)*1.0/10 +500},\
+                                  freq_to_lut={2: lambda x: (float(x)-59.75)*1.0/0.25 +500}))
                   
     board_lst.add("DDS38", lib_board.DdsBoard,
                   address=38,
@@ -168,7 +168,7 @@ def board_list_init(board_lst):
 
     board_lst.add("ANG19", lib_board.AnalogBoard,
                   address=19,
-                  parameters=dict(ang_to_dig={1: lambda x: 0.5*float(x)*32767*1.0/10}))
+                  parameters=dict(ang_to_dig={1: lambda x: float(x)*32767*1.0/10}))
 
     board_lst.add("ANG20", lib_board.AnalogBoard,
                   address=20,
