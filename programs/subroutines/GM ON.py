@@ -7,7 +7,7 @@ def program(prg, cmd):
     prg.add(-8900000, "TTL GM Repumper ON")
     prg.add(-8890000, "TTL GM Repumper OFF", enable=False)
     prg.add(-4980000, "AOM GM Detuning", 40.000)
-    prg.add(-1000, "TTL GM Repumper ON")
+    prg.add(-12200, "TTL GM Repumper ON")
     prg.add(-500, "AOM GM Amp ch1 (+)", 1000)
     prg.add(0, "AOM GM Amp ch2 (-)", 1000)
     return prg

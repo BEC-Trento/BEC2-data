@@ -29,21 +29,36 @@ def program(prg, cmd):
     prg.add(205760550, "DAC IR Horizontal Ellipt ramp", start_t=0, stop_x=6, n_points=100, start_x=0, stop_t=500)
     prg.add(210860550, "wait")
     prg.add(210861550, "DAC IR Horizontal ramp", start_t=0, stop_x=-0.05, n_points=100, start_x=0.25, stop_t=500)
-    prg.add(215871550, "DAC Vert IR", 0.0000)
-    prg.add(215881550, "AOM IR Vertical Amp", 1000)
-    prg.add(215882050, "AOM IR Vertical freq", 80.00)
-    prg.add(215883050, "MT Current Ramp", start_t=0, stop_x=0, n_points=100, start_x=18, stop_t=500)
-    prg.add(215884050, "DAC IR Vertical ramp", start_t=0, stop_x=4, n_points=100, start_x=0, stop_t=500)
-    prg.add(220984050, "Config field OFF")
-    prg.add(225984050, "wait")
-    prg.add(225986000, "Oscilloscope Trigger ON")
-    prg.add(225986050, "Switch Off Dipole")
-    prg.add(225986100, "Config field MT-MOT to Levit", enable=False)
-    prg.add(225987100, "DAC MT-MOT Current", 40.0000, enable=False)
-    prg.add(225987140, "Oscilloscope Trigger OFF")
-    prg.add(225988890, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')))
-    prg.add(225988890, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')), enable=False)
-    prg.add(240988890, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof')))
-    prg.add(240989890, "AOM IR Horizontal Amp", 1000)
-    prg.add(240989890, "Set_BrightMOT", enable=False)
+    prg.add(215871550, "wait")
+    prg.add(215881550, "DAC IR Horiz_Ellipt Exp ramp", tau=10, stop_t=100, n_points=100, start=1, func=(start-offset)*exp(-t/tau)+offset, offset=0, start_t=0, func_arg=start=1, tau=1, offset=0)
+    prg.add(215882550, "MT Current Ramp", start_t=0, stop_x=0, n_points=100, start_x=18, stop_t=500)
+    prg.add(215883550, "DAC IR Vertical ramp", start_t=0, stop_x=4, n_points=100, start_x=0, stop_t=500)
+    prg.add(220983550, "Config field OFF")
+    prg.add(225983550, "wait")
+    prg.add(225985500, "Oscilloscope Trigger ON")
+    prg.add(225985550, "Switch Off Dipole")
+    prg.add(225985600, "Config field MT-MOT to Levit", enable=False)
+    prg.add(225986600, "DAC MT-MOT Current", 40.0000, enable=False)
+    prg.add(225986640, "Oscilloscope Trigger OFF")
+    prg.add(225988390, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')))
+    prg.add(225988390, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')), enable=False)
+    prg.add(240988390, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof')))
+    prg.add(240989390, "AOM IR Horizontal Amp", 1000)
+    prg.add(240989390, "Set_BrightMOT", enable=False)
     return prg
+def commands(cmd):
+    import numpy as np
+    iters = np.arange(1, 10, 1)
+    np.random.shuffle(iters)
+    j = 0
+    while(cmd.running):
+        print('\n-------o-------')
+        tof1 = iters[j]
+        cmd.set_var('tof', tof1)
+        print('\n')
+        print('Run #%d/%d, with variables:\ntof = %g\n'%(j+1, len(iters), tof1))
+        cmd.run(wait_end=True, add_time=10000)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd

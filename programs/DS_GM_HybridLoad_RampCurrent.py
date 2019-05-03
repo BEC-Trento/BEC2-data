@@ -16,14 +16,15 @@ def program(prg, cmd):
     prg.add(135134710, "DAC Horiz IR", 0.0000, functions=dict(value=lambda x: cmd.get_var('CigarV')))
     prg.add(135135210, "AOM IR Horizontal Amp", 1000)
     prg.add(135135710, "AOM IR Horizontal freq", 80.00)
-    prg.add(135136710, "Evaporation Ramp.sub", enable=False)
-    prg.add(135136710, "MT Current Ramp", start_t=0, stop_x=18, n_points=100, start_x=24, stop_t=400, enable=False)
-    prg.add(135137940, "Config field OFF", functions=dict(time=lambda x: x+cmd.get_var('MT_load_time')))
-    prg.add(136137940, "Switch Off Dipole", functions=dict(time=lambda x: x+cmd.get_var('MT_load_time')))
-    prg.add(136139150, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')+cmd.get_var('MT_load_time')))
-    prg.add(136140360, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('MT_load_time')+cmd.get_var('tof')))
-    prg.add(151140360, "Set_MOT", functions=dict(time=lambda x: x + cmd.get_var('MT_load_time')+cmd.get_var('tof')))
-    prg.add(151140360, "Set_BrightMOT", enable=False)
+    prg.add(135635710, "DAC MT-MOT Voltage", 8.5000)
+    prg.add(135636710, "Evaporation Ramp.sub", enable=False)
+    prg.add(137136710, "MT Current Ramp", start_t=0, stop_x=18, n_points=100, start_x=24, stop_t=500, functions=dict(stop_x=lambda x: cmd.get_var('MT_I_final'), start_x=lambda x: cmd.get_var('MT_I')))
+    prg.add(137137940, "Config field OFF", functions=dict(time=lambda x: x+cmd.get_var('MT_load_time')))
+    prg.add(138137940, "Switch Off Dipole", functions=dict(time=lambda x: x+cmd.get_var('MT_load_time')))
+    prg.add(138139150, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')+cmd.get_var('MT_load_time')))
+    prg.add(138140360, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('MT_load_time')+cmd.get_var('tof')))
+    prg.add(153140360, "Set_MOT", functions=dict(time=lambda x: x + cmd.get_var('MT_load_time')+cmd.get_var('tof')))
+    prg.add(153140360, "Set_BrightMOT", enable=False)
     return prg
 def commands(cmd):
     import numpy as np

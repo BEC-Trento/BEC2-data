@@ -9,4 +9,5 @@ def program(prg, cmd):
     prg.add(2000, "DAC Horiz IR", 5.4000)
     prg.add(2400, "AOM IR Horiz_Ellipt freq", 145.00)
     prg.add(2800, "AOM IR Horiz_Ellipt Amp", 1000)
+    prg.add(3200, "DAC IR Horiz_Ellipt", 6.0000)
     return prg

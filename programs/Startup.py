@@ -35,16 +35,16 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(0, 1, 1)
+    iters = np.arange(1, 21, 2)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
         print('\n-------o-------')
-        x1 = iters[j]
-        cmd.set_var('x', x1)
+        tof1 = iters[j]
+        cmd.set_var('tof', tof1)
         print('\n')
-        print('Run #%d/%d, with variables:\nx = %g\n'%(j+1, len(iters), x1))
-        cmd.run(wait_end=True, add_time=100)
+        print('Run #%d/%d, with variables:\ntof = %g\n'%(j+1, len(iters), tof1))
+        cmd.run(wait_end=True, add_time=5000)
         j += 1
         if j == len(iters):
             cmd.stop()

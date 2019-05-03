@@ -1,7 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
-    prg.add(-100000, "Shutter Gray Molasses OFF")
+    prg.add(-101199, "Shutter Gray Molasses OFF")
     prg.add(0, "GM ON")
     prg.add(5000, "AOM GM Detuning", 100.000)
     prg.add(5010, "Oscilloscope Trigger ON", enable=False)

@@ -781,22 +781,22 @@ def action_list_init(act_lst):
 
     act_lst.add("TTL uW 2 ON", lib_action.DigitalAction,
 		board="TTL3",
-		parameters=dict(channel=[4], status=[True]),
+		parameters=dict(channel=[8], status=[True]),
 		categories=["actions", "TTL"])
 
     act_lst.add("TTL uW 2 OFF", lib_action.DigitalAction,
 		board="TTL3",
-		parameters=dict(channel=[4], status=[False]),
+		parameters=dict(channel=[8], status=[False]),
 		categories=["actions", "TTL"])
 
     act_lst.add("TTL uW 2 FSK HIGH", lib_action.DigitalAction,
 		board="TTL3",
-		parameters=dict(channel=[8], status=[True]),
+		parameters=dict(channel=[4], status=[True]),
 		categories=["actions", "TTL"])
 
     act_lst.add("TTL uW 2 FSK LOW", lib_action.DigitalAction,
 		board="TTL3",
-		parameters=dict(channel=[8], status=[False]),
+		parameters=dict(channel=[4], status=[False]),
 		categories=["actions", "TTL"])
 
     act_lst.add("TTL uW 4 ON", lib_action.DigitalAction,
@@ -975,3 +975,20 @@ def action_list_init(act_lst):
 ###OTHER###
 
     act_lst.add("wait", lib_action.EmptyAction)
+
+#    act_lst.add("Set Marconi uw", lib_action.MarconiScriptAction,
+#                parameters=dict(script="devices/marconi/MarconiComm.py"),
+#                #parameters=dict(script="devices/fake_marconi.py"),
+#                variables=dict(frequency=1769.0, amplitude=0),
+#                var_formats=dict(frequency="%.6f", amplitude="%.2f"),
+#                categories=["actions", "scripts"],
+#                comment="Remote Marconi")  
+
+    act_lst.add("Set Marconi2", lib_action.MarconiScriptAction,
+                parameters=dict(script="data/devices/Marconi2-setFrequency.py"),
+#                parameters=dict(script="ls"),
+                variables=dict(frequency=1769.0, amplitude=8.),
+                var_formats=dict(frequency="%.6f", amplitude="%.2f"),
+                categories=["actions", "scripts"],
+                comment="Remote Marconi")     
+

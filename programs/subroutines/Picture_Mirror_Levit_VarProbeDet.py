@@ -11,6 +11,7 @@ def program(prg, cmd):
     prg.add(-3010000, "Shutter RepumperMOT ON")
     prg.add(-102100, "DAC BCompY", 0.1000)
     prg.add(-99100, "IGBT BCompY CLOSE")
+    prg.add(-11500, "Config field OFF")
     prg.add(-5000, "AOM DS + RepumperMOT Amp ", 1000)
     prg.add(-3000, "AOM Probe Detuning", 0.000, functions=dict(frequency=lambda x: cmd.get_var('probe_det')))
     prg.add(-2300, "TTL Picture Hamamatsu  ON")
