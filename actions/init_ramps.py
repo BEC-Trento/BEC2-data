@@ -113,14 +113,31 @@ def action_list_init(action_list):
     action_list.add("DAC IR Horiz_Ellipt Exp ramp",
                     lib_ramp.FunctionRamp,
                     categories = ["func"],
-                    parameters=dict(act_name="DAC IR Horiz_Ellipt", act_var_name="value"),
-                    variables=dict(start=0, offset=0, start_t=0, stop_t=0, tau=0, n_points=1, func='(start-offset)*exp(-t/tau)+offset', func_arg='start=1, tau=1, offset=0'),
-                    comment="time")
-
-    action_list.add("DAC BCompZ Func", lib_ramp.FunctionRamp,
-                    categories=["func"],
-                    parameters=dict(act_name="DAC BCompZ", act_var_name="value",           act_parameters={}),
-                    variables=dict(start_t=0, stop_t=100, n_points=100,
-                                   func="amp*sin(2*pi*freq*t)**2", func_args="amp=5, freq=100"),
+                    parameters=dict(act_name="DAC IR Horiz_Ellipt", act_var_name="value", act_parameters={}),
+                    variables=dict( start_t=0,
+                                    stop_t=0,
+#                                    start_value=0,
+#                                    offset=0,
+#                                    tau=0,
+                                    n_points=1,
+                                    func="(start_value-offset)*exp(-t/tau)+offset",
+                                    func_args='start_value=1, tau=1, offset=0'),
                     var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
                     comment="time")
+
+    action_list.add("DAC Vert IR Exp ramp",
+                    lib_ramp.FunctionRamp,
+                    categories = ["func"],
+                    parameters=dict(act_name="DAC Vert IR", act_var_name="value", act_parameters={}),
+                    variables=dict( start_t=0,
+                                    stop_t=0,
+#                                    start_value=0,
+#                                    offset=0,
+#                                    tau=0,
+                                    n_points=1,
+                                    func="(start_value-offset)*exp(-t/tau)+offset",
+                                    func_args='start_value=1, tau=1, offset=0'),
+                    var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
+                    comment="time")
+
+

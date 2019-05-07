@@ -1,16 +1,13 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
-    prg.add(0, "Initialize 0 TTL and Synchronize.sub")
-    prg.add(50000, "Switch Off MOT")
-    prg.add(5060000, "Set_BrightMOT", enable=False)
-    prg.add(5060000, "Set_MOT")
-    prg.add(135050150, "Oscilloscope Trigger ON")
-    prg.add(135060000, "Switch Off MOT", enable=False)
-    prg.add(135060000, "Switch Off MOT_fast")
-    prg.add(135061250, "GM_051018")
-    prg.add(135111250, "Oscilloscope Trigger OFF")
-    prg.add(135111480, "Picture_Na_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')))
-    prg.add(140111480, "Set_MOT")
-    prg.add(140111480, "Set_BrightMOT", enable=False)
+    prg.add(0, "AOM IR Vertical freq", 120.00)
+    prg.add(400, "AOM IR Vertical Amp", 1000)
+    prg.add(800, "DAC Vert IR", 4.0000)
+    prg.add(1200, "AOM IR Horizontal freq", 120.00)
+    prg.add(1600, "AOM IR Horizontal Amp", 1000)
+    prg.add(2000, "DAC Horiz IR", 5.4000)
+    prg.add(2400, "AOM IR Horiz_Ellipt freq", 145.00)
+    prg.add(2800, "AOM IR Horiz_Ellipt Amp", 1000)
+    prg.add(3200, "DAC IR Horiz_Ellipt", 6.0000)
     return prg
