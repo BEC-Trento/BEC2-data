@@ -879,18 +879,18 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC BGradZ", lib_action.AnalogAction,
+    act_lst.add("DAC uW 1", lib_action.AnalogAction,
                 board="ANG13",
                 parameters=dict(),
                 variables=dict(value=0),
                 var_formats=dict(value="%.4f"),
                 categories=["actions", "analog"],
-                comment="0 - 10 A")
+                comment="0 - 10V")
 
-    act_lst.add("DAC 3DMOT Coils Current", lib_action.EmptyAction)
+#    act_lst.add("DAC 3DMOT Coils Current", lib_action.EmptyAction)
 
 
-    act_lst.add("DAC BCompX", lib_action.AnalogAction,
+    act_lst.add("DAC uW 2", lib_action.AnalogAction,
                 board="ANG14",
                 parameters=dict(),
                 variables=dict(value=0),
@@ -946,13 +946,13 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC uW 2/4 Power", lib_action.AnalogAction,
+    act_lst.add("DAC PiezoHorizEllipt", lib_action.AnalogAction,
                 board="ANG20",
                 parameters=dict(),
                 variables=dict(value=0),
                 var_formats=dict(value="%.4f"),
                 categories=["actions", "analog"],
-                comment="0 - 10V")
+                comment="-10 - 10V")
 
 
 

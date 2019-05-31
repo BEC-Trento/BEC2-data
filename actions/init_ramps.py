@@ -109,7 +109,21 @@ def action_list_init(action_list):
                     parameters=dict(act_name="RF Landau-Zener LUT", act_var_name="n_lut"),
                     variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
                     comment="")
-    
+
+    action_list.add("DAC Horiz IR Exp ramp",
+                    lib_ramp.FunctionRamp,
+                    categories = ["func"],
+                    parameters=dict(act_name="DAC Horiz IR", act_var_name="value", act_parameters={}),
+                    variables=dict( start_t=0,
+                                    stop_t=0,
+#                                    start_value=0,
+#                                    offset=0,
+#                                    tau=0,
+                                    n_points=1,
+                                    func="(start_value-offset)*exp(-t/tau)+offset",
+                                    func_args='start_value=1, tau=1, offset=0'),
+                    var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
+                    comment="time")  
     action_list.add("DAC IR Horiz_Ellipt Exp ramp",
                     lib_ramp.FunctionRamp,
                     categories = ["func"],

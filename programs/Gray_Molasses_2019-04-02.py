@@ -16,7 +16,7 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(1, 10, 1)
+    iters = np.arange(1, 20, 1)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):

@@ -1,7 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
-    prg.add(0, "AOM IR Vertical freq", 120.00)
+    prg.add(0, "AOM IR Vertical freq", 110.00)
     prg.add(400, "AOM IR Vertical Amp", 1000)
     prg.add(800, "DAC Vert IR", 4.0000)
     prg.add(1200, "AOM IR Horizontal freq", 120.00)

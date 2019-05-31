@@ -12,12 +12,12 @@ def program(prg, cmd):
     prg.add(10600, "Breakpoint Source Table ON")
     prg.add(11200, "Config field OFF")
     prg.add(13700, "Initialize_Dipole_Off")
-    prg.add(16900, "All BComp ON", enable=False)
     prg.add(18000, "TTL Relay Upper Coil CLOSE")
     prg.add(18500, "TTL Relay Lower Coil CLOSE")
     prg.add(30800, "Breakpoint Main Table OFF")
     prg.add(30900, "Breakpoint Source Table OFF")
     prg.add(30950, "BREAKPOINT")
     prg.add(31300, "NOP")
+    prg.add(35000, "Set Marconi2", frequency=1769.000000, amplitude=7.00, functions=dict(frequency=lambda x: cmd.get_var('uW2_freq')))
     prg.add(41300, "TTL Test Trigger ON", enable=False)
     return prg

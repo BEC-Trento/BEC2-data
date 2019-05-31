@@ -2,7 +2,6 @@ prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
     prg.add(0, "Initialize 0 TTL and Synchronize.sub")
-    prg.add(15800, "Initialize_Dipole_Lowpower", enable=False)
     prg.add(65800, "Switch Off MOT")
     prg.add(5075800, "Set_BrightMOT", enable=False)
     prg.add(5075800, "Set_MOT")
@@ -20,19 +19,19 @@ def program(prg, cmd):
     prg.add(135636050, "DAC MT-MOT Voltage", 8.5000)
     prg.add(135637050, "Evaporation Ramp.sub", enable=False)
     prg.add(137137050, "MT Current Ramp", start_t=0, stop_x=0, n_points=100, start_x=24, stop_t=500, functions=dict(start_x=lambda x: cmd.get_var('MT_I'), stop_x=lambda x: cmd.get_var('MT_I_final')))
-    prg.add(142138000, "RF Evaporation", 0, functions=dict(n_lut=lambda x: cmd.get_var('evapLUT')))
-    prg.add(175600000, "RF Evaporation", 503)
+    prg.add(142138000, "RF Evaporation", 0, functions=dict(n_lut=lambda x: cmd.get_var('evapLUT')), enable=False)
+    prg.add(175600000, "RF Evaporation", 503, enable=False)
     prg.add(175637050, "MT Current Ramp", start_t=0, stop_x=18, n_points=100, start_x=0, stop_t=500, functions=dict(start_x=lambda x: cmd.get_var('MT_I_final')))
     prg.add(175638000, "Oscilloscope Trigger ON")
-    prg.add(176637050, "Config field OFF", enable=False)
-    prg.add(176638000, "Config field OFF")
-    prg.add(177138000, "Switch Off Dipole")
-    prg.add(177139790, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')))
-    prg.add(177139790, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')), enable=False)
-    prg.add(177158040, "Oscilloscope Trigger OFF")
-    prg.add(192139790, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof')))
-    prg.add(192140790, "AOM IR Horizontal Amp", 1000)
-    prg.add(192140790, "Set_BrightMOT", enable=False)
+    prg.add(180638000, "wait")
+    prg.add(181638000, "Config field OFF")
+    prg.add(181639000, "Switch Off Dipole")
+    prg.add(181640790, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')))
+    prg.add(181640790, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')), enable=False)
+    prg.add(181659040, "Oscilloscope Trigger OFF")
+    prg.add(196640790, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof')))
+    prg.add(196641790, "AOM IR Horizontal Amp", 1000)
+    prg.add(196641790, "Set_BrightMOT", enable=False)
     return prg
 def commands(cmd):
     import numpy as np

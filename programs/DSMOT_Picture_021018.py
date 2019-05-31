@@ -17,19 +17,18 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    det_arr, amp_arr, mot_I_arr = np.mgrid[-22:-17:1, 200:500:50, 25:35:1, ]
-    iters = list(zip(det_arr.ravel(), amp_arr.ravel(), mot_I_arr.ravel()))
+    hold_time_arr, x_arr = np.mgrid[0:200:10, 0:4:1, ]
+    iters = list(zip(hold_time_arr.ravel(), x_arr.ravel()))
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
         print('\n-------o-------')
-        det1, amp1, mot_I1 = iters[j]
-        cmd.set_var('det', det1)
-        cmd.set_var('amp', amp1)
-        cmd.set_var('mot_I', mot_I1)
+        hold_time1, x1 = iters[j]
+        cmd.set_var('hold_time', hold_time1)
+        cmd.set_var('x', x1)
         print('\n')
-        print('Run #%d/%d, with variables:\ndet = %g\namp = %g\nmot_I = %g\n'%(j+1, len(iters), det1, amp1, mot_I1))
-        cmd.run(wait_end=True, add_time=5000)
+        print('Run #%d/%d, with variables:\nhold_time = %g\nx = %g\n'%(j+1, len(iters), hold_time1, x1))
+        cmd.run(wait_end=True, add_time=10000)
         j += 1
         if j == len(iters):
             cmd.stop()

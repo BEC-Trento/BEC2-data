@@ -1,7 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
-    prg.add(-101199, "Shutter Gray Molasses OFF")
+    prg.add(-101199, "Shutter Gray Molasses OFF", enable=False)
     prg.add(0, "GM ON")
     prg.add(5000, "AOM GM Detuning", 100.000)
     prg.add(5010, "Oscilloscope Trigger ON", enable=False)
@@ -13,8 +13,8 @@ def program(prg, cmd):
     prg.add(49000, "AOM GM Amp ch1 (+)", 1)
     prg.add(49500, "AOM GM Amp ch2 (-)", 1)
     prg.add(49550, "Oscilloscope Trigger OFF", enable=False)
-    prg.add(10049500, "AOM GM Amp ch1 (+)", 1000)
-    prg.add(10059500, "AOM GM Amp ch2 (-)", 1000)
+    prg.add(10049500, "AOM GM Amp ch1 (+)", 1000, enable=False)
+    prg.add(10059500, "AOM GM Amp ch2 (-)", 1000, enable=False)
     prg.add(10069500, "TTL GM Repumper ON", enable=False)
     prg.add(10069500, "TTL GM Repumper OFF", enable=False)
     return prg

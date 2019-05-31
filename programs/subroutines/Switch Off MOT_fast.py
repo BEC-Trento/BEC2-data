@@ -14,6 +14,4 @@ def program(prg, cmd):
     prg.add(3000, "AOM Push Amp ch1 (+)", 1)
     prg.add(3500, "AOM 2DMOT Amp ch2 (-)", 1)
     prg.add(4000, "AOM 2DMOT Amp ch1 (+)", 1)
-    prg.add(4000, "AOM GM Amp ch1 (+)", 1, enable=False)
-    prg.add(4500, "AOM GM Amp ch2 (-)", 1, enable=False)
     return prg
