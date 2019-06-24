@@ -32,6 +32,7 @@ def program(prg, cmd):
     prg.add(61000, "TTL Dark Spot ON")
     prg.add(61500, "TTL Repumper MOT OFF")
     prg.add(61500, "TTL Repumper MOT  ON", enable=False)
+    prg.add(62000, "phase imprint OFF")
     prg.add(64000, "shutter MOT open")
     prg.add(67000, "Config Field MT-MOT")
     prg.add(74000, "TTL GM Repumper OFF")

@@ -57,9 +57,11 @@ def board_list_init(board_lst):
 
     board_lst.add("DDS39", lib_board.DdsBoard,
                   address=39,
-                  parameters=dict(amp_to_lut={1: lambda x: int(max(min(x/10.0, 100),0)+400), \
-                                    2: lambda x: (int(x)+4000)*1.0/10 +500},\
-                                  freq_to_lut={2: lambda x: (float(x)-59.75)*1.0/0.25 +500}))
+                  parameters=dict(
+                    amp_to_lut={1: lambda x: int(max(min(x/10.0, 100),0)+400),
+                                2: lambda x: (int(x)+4000)*1.0/10 +500},
+                    freq_to_lut={1: lambda x: (float(x)-59.75)/0.25,
+                                 2: lambda x: (float(x)-59.75)/0.25 +500}))
                   
     board_lst.add("DDS38", lib_board.DdsBoard,
                   address=38,
@@ -105,6 +107,11 @@ def board_list_init(board_lst):
                   address=31,
                   parameters=dict(amp_to_lut={1: lambda x: 799 + int(x/10), 2: lambda x: 900 + int(x/10)},
                                   freq_to_lut={1: lambda x: 401 + int(x/(4*0.125))}))
+   
+    board_lst.add("DDS41", lib_board.DdsBoard,
+                  address=41,
+                  parameters=dict(amp_to_lut={1: lambda x: (int(x)+4000)*1.0/10, 2: lambda x: (int(x)+4000)*1.0/10 +500},
+                                  freq_to_lut={1: lambda x: (float(x)/2-59.75)*1.0/0.25, 2: lambda x: (float(x)/2 -59.75)*1.0/0.25 +500}))
 
 
     board_lst.add("DDS64", lib_board.DdsBoard,

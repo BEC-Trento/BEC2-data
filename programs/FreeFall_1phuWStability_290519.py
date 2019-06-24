@@ -34,33 +34,33 @@ def program(prg, cmd):
     prg.add(231437250, "wait")
     prg.add(231437250, "Synchronize.sub")
     prg.add(231538250, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(231548250, "TTL uW 2 ON", enable=False)
-    prg.add(231550750, "TTL uW 2 OFF", enable=False)
-    prg.add(231581750, "TTL uW 1 (100W) ON", functions=dict(time=lambda x: x - cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
-    prg.add(231581850, "TTL uW 2 ON", functions=dict(time=lambda x: x - cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
-    prg.add(231581850, "TTL uW 1 (100W) OFF", functions=dict(time=lambda x: x  + cmd.get_var('hold_time')))
-    prg.add(231581950, "TTL uW 2 OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(231582050, "Config field Levit", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(231582050, "Config field MT-MOT to Levit", functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
-    prg.add(231582050, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
-    prg.add(231583060, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(231584310, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')), enable=False)
-    prg.add(231584310, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')  + cmd.get_var('hold_time')))
-    prg.add(236584310, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof')))
-    prg.add(236585310, "AOM IR Horizontal Amp", 1000)
-    prg.add(236585310, "Set_BrightMOT", enable=False)
+    prg.add(231548250, "TTL uW 1 (100W) ON")
+    prg.add(231549500, "TTL uW 1 (100W) OFF")
+    prg.add(231600500, "TTL uW 1 (100W) ON", functions=dict(time=lambda x: x - cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
+    prg.add(231600600, "TTL uW 2 ON", functions=dict(time=lambda x: x - cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
+    prg.add(231600600, "TTL uW 1 (100W) OFF", functions=dict(time=lambda x: x  + cmd.get_var('hold_time')))
+    prg.add(231600700, "TTL uW 2 OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(231600800, "Config field Levit", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(231600800, "Config field MT-MOT to Levit", functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
+    prg.add(231600800, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
+    prg.add(231601810, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(231603060, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')), enable=False)
+    prg.add(231603060, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')  + cmd.get_var('hold_time')))
+    prg.add(236603060, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof')))
+    prg.add(236604060, "AOM IR Horizontal Amp", 1000)
+    prg.add(236604060, "Set_BrightMOT", enable=False)
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(692.550000, 694.000000, 0.100000)
+    iters = np.arange(0.010000, 0.500000, 0.020000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
         print('\n-------o-------')
-        uW_freq21 = iters[j]
-        cmd.set_var('uW_freq2', uW_freq21)
+        uW_pulse1 = iters[j]
+        cmd.set_var('uW_pulse', uW_pulse1)
         print('\n')
-        print('Run #%d/%d, with variables:\nuW_freq2 = %g\n'%(j+1, len(iters), uW_freq21))
+        print('Run #%d/%d, with variables:\nuW_pulse = %g\n'%(j+1, len(iters), uW_pulse1))
         cmd.run(wait_end=True, add_time=10000)
         j += 1
         if j == len(iters):

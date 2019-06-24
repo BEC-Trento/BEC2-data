@@ -51,3 +51,19 @@ def program(prg, cmd):
     prg.add(237544310, "AOM IR Horizontal Amp", 1000)
     prg.add(237544310, "Set_BrightMOT", enable=False)
     return prg
+def commands(cmd):
+    import numpy as np
+    iters = np.arange(810.600000, 811.400000, 0.100000)
+    np.random.shuffle(iters)
+    j = 0
+    while(cmd.running):
+        print('\n-------o-------')
+        uW_freq21 = iters[j]
+        cmd.set_var('uW_freq2', uW_freq21)
+        print('\n')
+        print('Run #%d/%d, with variables:\nuW_freq2 = %g\n'%(j+1, len(iters), uW_freq21))
+        cmd.run(wait_end=True, add_time=100)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd

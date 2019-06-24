@@ -27,31 +27,31 @@ def program(prg, cmd):
     prg.add(214240550, "DAC IR Horiz_Ellipt", -0.1000)
     prg.add(214250550, "AOM IR Horiz_Ellipt Amp", 1000)
     prg.add(214251050, "AOM IR Horiz_Ellipt freq", 110.00)
-    prg.add(214252050, "DAC IR Horiz_Ellipt", 1.0000, functions=dict(value=lambda x: cmd.get_var('Ellipt_finalValue'), funct_enable=False))
+    prg.add(214252050, "DAC IR Horiz_Ellipt", 2.0000, functions=dict(value=lambda x: cmd.get_var('Ellipt_finalValue'), funct_enable=False))
     prg.add(214253050, "DAC IR Horizontal Ellipt ramp", start_t=0, stop_x=5.5, n_points=100, start_x=0, stop_t=100, enable=False)
     prg.add(214253150, "Oscilloscope Trigger ON")
-    prg.add(214253200, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(214255200, "Config field MT-MOT to Levit", functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
-    prg.add(214256200, "DAC MT-MOT Current", 40.0000, functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
-    prg.add(214256200, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(214256240, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(214257990, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x + cmd.get_var('tof')+cmd.get_var('hold_time')))
-    prg.add(214257990, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')), enable=False)
-    prg.add(229257990, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof') + cmd.get_var('hold_time')))
-    prg.add(229257990, "Set_BrightMOT", enable=False)
+    prg.add(214273200, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(214275200, "Config field MT-MOT to Levit", functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
+    prg.add(214276200, "DAC MT-MOT Current", 40.0000, functions=dict(time=lambda x: x + cmd.get_var('hold_time'), funct_enable=False), enable=False)
+    prg.add(214276200, "Config field OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(214276240, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(214477990, "Picture_Mirror_Na_VarProbeDet", functions=dict(time=lambda x: x +cmd.get_var('hold_time')))
+    prg.add(214477990, "Picture_Mirror_Levit_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof'), funct_enable=False), enable=False)
+    prg.add(229477990, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof') + cmd.get_var('hold_time'), funct_enable=False))
+    prg.add(229477990, "Set_BrightMOT", enable=False)
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(-10, 11, 1)
+    iters = np.arange(0.000000, 3.000000, 0.200000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
         print('\n-------o-------')
-        PiezoElliptV1 = iters[j]
-        cmd.set_var('PiezoElliptV', PiezoElliptV1)
+        hold_time1 = iters[j]
+        cmd.set_var('hold_time', hold_time1)
         print('\n')
-        print('Run #%d/%d, with variables:\nPiezoElliptV = %g\n'%(j+1, len(iters), PiezoElliptV1))
-        cmd.run(wait_end=True, add_time=10000)
+        print('Run #%d/%d, with variables:\nhold_time = %g\n'%(j+1, len(iters), hold_time1))
+        cmd.run(wait_end=True, add_time=100)
         j += 1
         if j == len(iters):
             cmd.stop()

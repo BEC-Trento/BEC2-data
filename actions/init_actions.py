@@ -44,6 +44,7 @@ def action_list_init(act_lst):
                 var_formats=dict(frequency="%.2f"),
                 categories=["actions", "DDS"],
                 comment="MHz")
+                
     act_lst.add("AOM IR Horiz_Ellipt Amp", lib_action.DdsAction,
                 board="DDS39",
                 parameters=dict(channel=2),
@@ -52,6 +53,21 @@ def action_list_init(act_lst):
                 categories=["actions", "DDS"],
                 comment="1,10,20,...1000")
 
+    act_lst.add("AOM PhaseImprint freq", lib_action.DdsAction,
+                board="DDS39",
+                parameters=dict(channel=1),
+                variables=dict(frequency=0),
+                var_formats=dict(frequency="%.2f"),
+                categories=["actions", "DDS"],
+                comment="60 - 160 MHz")
+                
+    act_lst.add("AOM PhaseImprint Amp", lib_action.DdsAction,
+                board="DDS39",
+                parameters=dict(channel=1),
+                variables=dict(amplitude=0),
+                var_formats=dict(amplitude="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")           
 
     act_lst.add("AOM DS + RepumperMOT Amp ", lib_action.DdsAction,
                 board="DDS36",
@@ -76,6 +92,14 @@ def action_list_init(act_lst):
                 var_formats=dict(n_lut="%d"),
                 categories=["actions", "DDS"],
                 comment="LUT")
+    
+    act_lst.add("uW mixin frequency", lib_action.DdsAction,
+                board="DDS41",
+                parameters=dict(channel=1),
+                variables=dict(frequency=0),
+                var_formats=dict(frequency="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
 
 #    act_lst.add("DDS36 Ch2 Amp ", lib_action.DdsAction,
 #                board="DDS36",
@@ -809,12 +833,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[11], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL uW 1 FSK HIGH", lib_action.DigitalAction,
+    act_lst.add("TTL RF-arp ON", lib_action.DigitalAction,
 		board="TTL3",
 		parameters=dict(channel=[12], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL uW 1 FSK LOW", lib_action.DigitalAction,
+    act_lst.add("TTL RF-arp OFF", lib_action.DigitalAction,
 		board="TTL3",
 		parameters=dict(channel=[12], status=[False]),
 		categories=["actions", "TTL"])
@@ -879,13 +903,13 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC uW 1", lib_action.AnalogAction,
+    act_lst.add("DAC SRS", lib_action.AnalogAction,
                 board="ANG13",
                 parameters=dict(),
                 variables=dict(value=0),
                 var_formats=dict(value="%.4f"),
                 categories=["actions", "analog"],
-                comment="0 - 10V")
+                comment="-10 - 10V")
 
 #    act_lst.add("DAC 3DMOT Coils Current", lib_action.EmptyAction)
 
@@ -976,19 +1000,29 @@ def action_list_init(act_lst):
 
     act_lst.add("wait", lib_action.EmptyAction)
 
-#    act_lst.add("Set Marconi uw", lib_action.MarconiScriptAction,
-#                parameters=dict(script="devices/marconi/MarconiComm.py"),
+#    act_lst.add("Set Marconi1", lib_action.MarconiScriptAction,
+#                parameters=dict(script="data/devices/marconi_rpc.py"),
 #                #parameters=dict(script="devices/fake_marconi.py"),
 #                variables=dict(frequency=1769.0, amplitude=0),
-#                var_formats=dict(frequency="%.6f", amplitude="%.2f"),
+#                var_formats=dict(frequency="%f", amplitude="%f"),
 #                categories=["actions", "scripts"],
 #                comment="Remote Marconi")  
 
-    act_lst.add("Set Marconi2", lib_action.MarconiScriptAction,
-                parameters=dict(script="data/devices/Marconi2-setFrequency.py"),
+    act_lst.add("Set MarconiS", lib_action.MarconiSScriptAction,
+                parameters=dict(script="data/devices/set_marconis.py"),
 #                parameters=dict(script="ls"),
-                variables=dict(frequency=1769.0, amplitude=8.),
-                var_formats=dict(frequency="%.6f", amplitude="%.2f"),
+                variables=dict(frequency1=1769.0, amplitude1=8., frequency2=1769.0, amplitude2=8.),
+                var_formats=dict(frequency1="%f", amplitude1="%f", frequency2="%f", amplitude2="%f"),
                 categories=["actions", "scripts"],
-                comment="Remote Marconi")     
+                comment="Remote Marconi") 
+#                
+#                
+#    act_lst.add("Set Marconi2", lib_action.MarconiScriptAction2,
+#                parameters=dict(script="data/devices/Marconi2-setFrequency.py"),
+##                parameters=dict(script="ls"),
+#                variables=dict(frequency=1769.0, amplitude=8.),
+#                var_formats=dict(frequency="%f", amplitude="%f"),
+#                categories=["actions", "scripts"],
+#                comment="Remote Marconi")     
+#    
 
