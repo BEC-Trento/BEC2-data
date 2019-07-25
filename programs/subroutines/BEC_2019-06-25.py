@@ -1,0 +1,25 @@
+prg_comment = ""
+prg_version = "0.7"
+def program(prg, cmd):
+    prg.add(0, "Initialize 0 TTL and Synchronize.sub")
+    prg.add(50000, "Switch Off MOT")
+    prg.add(60000, "[test] Degauss_1012")
+    prg.add(12060000, "Set_MOT")
+    prg.add(92060000, "Switch Off MOT_fast")
+    prg.add(92061250, "GM_051018")
+    prg.add(92063150, "DAC MT-MOT Current", 0.0000, functions=dict(value=lambda x: cmd.get_var('MT_I')))
+    prg.add(92063650, "DAC MT-MOT Voltage", 0.0000, functions=dict(value=lambda x: cmd.get_var('MT_Voltage')))
+    prg.add(92073000, "Oscilloscope Trigger ON", enable=False)
+    prg.add(92116750, "wait")
+    prg.add(92117750, "Config Field MT-MOT")
+    prg.add(92118750, "DAC Horiz IR", 0.0000, functions=dict(value=lambda x: cmd.get_var('CigarV')))
+    prg.add(92119250, "AOM IR Horizontal Amp", 1000)
+    prg.add(92119750, "AOM IR Horizontal freq", 80.00)
+    prg.add(92120250, "Oscilloscope Trigger ON", enable=False)
+    prg.add(92620250, "DAC MT-MOT Voltage", 8.5000)
+    prg.add(92621250, "Evaporation Ramp.sub", enable=False)
+    prg.add(94121250, "MT Current Ramp", start_t=0, stop_x=0, n_points=100, start_x=24, stop_t=500, functions=dict(start_x=lambda x: cmd.get_var('MT_I'), stop_x=lambda x: cmd.get_var('MT_I_final')))
+    prg.add(132621250, "MT Current Ramp", start_t=0, stop_x=18, n_points=100, start_x=0, stop_t=500, functions=dict(start_x=lambda x: cmd.get_var('MT_I_final')))
+    prg.add(137722250, "Horizontal Dipole Evaporation Ramp_5V_2019_03")
+    prg.add(170223250, "wait")
+    return prg

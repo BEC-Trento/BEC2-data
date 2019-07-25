@@ -97,10 +97,33 @@ def action_list_init(act_lst):
                 board="DDS41",
                 parameters=dict(channel=1),
                 variables=dict(frequency=0),
-                var_formats=dict(frequency="%d"),
+                var_formats=dict(frequency="%.2f"),
                 categories=["actions", "DDS"],
                 comment="1,10,20,...1000")
 
+    act_lst.add("uW mixin amplitude", lib_action.DdsAction,
+                board="DDS41",
+                parameters=dict(channel=1),
+                variables=dict(amplitude=0),
+                var_formats=dict(amplitude="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
+    
+    act_lst.add("uW2 mixin frequency", lib_action.DdsAction,
+                board="DDS41",
+                parameters=dict(channel=2),
+                variables=dict(frequency=0),
+                var_formats=dict(frequency="%.2f"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
+
+    act_lst.add("uW2 mixin amplitude", lib_action.DdsAction,
+                board="DDS41",
+                parameters=dict(channel=2),
+                variables=dict(amplitude=0),
+                var_formats=dict(amplitude="%d"),
+                categories=["actions", "DDS"],
+                comment="1,10,20,...1000")
 #    act_lst.add("DDS36 Ch2 Amp ", lib_action.DdsAction,
 #                board="DDS36",
 #                parameters=dict(channel=2),

@@ -6,7 +6,7 @@ def program(prg, cmd):
     prg.add(-3511500, "AOM Probe Amp ch2 (-)", 0)
     prg.add(-3501500, "AOM Probe Amp ch1 (+)", 0)
     prg.add(-3250000, "TTL MirrorBottom Probe", enable=False)
-    prg.add(-3013000, "Shutter Probe Hor ON", enable=False)
+    prg.add(-3013000, "Shutter Probe Hor ON")
     prg.add(-3012000, "Shutter Probe Vert ON")
     prg.add(-3010000, "Shutter RepumperMOT ON", enable=False)
     prg.add(-102100, "DAC BCompY", 0.1000, enable=False)
