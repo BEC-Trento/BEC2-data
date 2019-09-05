@@ -1,4 +1,9 @@
 import libraries.action as lib_action
+
+# save some useful strings
+
+#HalfGaussRamp
+# "a=-0.1, b={}, duration=0.2, width=0.1".format(cmd.get_var('SRS_voltage'))
 def action_list_init(act_lst):
     act_lst.add("AOM IR Horizontal freq", lib_action.DdsAction,
                 board="DDS37",
@@ -375,6 +380,16 @@ def action_list_init(act_lst):
                 var_formats=dict(amplitude="%.3f"),
                 categories=["actions", "DDS"],
                 comment="CH1 0 to 1000, CH2 free")
+    
+### MAGICAL FULLDDSACTIONS
+    act_lst.add("DDS41_setfull", lib_action.FullDdsAction,
+                board="DDS41",
+                parameters=dict(),
+                variables=dict(ch0_freq=0, ch0_amp=0, ch0_phase=0, ch1_freq=0, ch1_amp=0, ch1_phase=0),
+                var_formats=dict(ch0_freq="%.3f", ch0_amp="%d", ch0_phase="%.3f", ch1_freq="%.3f", ch1_amp="%d", ch1_phase="%.3f"),
+                categories=["actions", "DDS"],
+                comment="CH1 0 to 1000, CH2 free")
+               
 
 ###TTL###
 

@@ -38,7 +38,7 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(443.000000, 446.000000, 0.300000)
+    iters = np.arange(427.000000, 466.000000, 3.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):

@@ -3,7 +3,7 @@ prg_version = "0.7"
 def program(prg, cmd):
     prg.add(0, "BEC_2019-06-25")
     prg.add(220500000, "Config field OFF", enable=False)
-    prg.add(220500950, "Oscilloscope Trigger ON", enable=False)
+    prg.add(220500950, "Oscilloscope Trigger ON")
     prg.add(220501000, "Switch Off Dipole")
     prg.add(220501050, "Config field MT-MOT to Levit", enable=False)
     prg.add(220502050, "DAC MT-MOT Current", 40.0000, enable=False)
