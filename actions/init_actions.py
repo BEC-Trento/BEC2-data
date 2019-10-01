@@ -3,7 +3,7 @@ import libraries.action as lib_action
 # save some useful strings
 
 #HalfGaussRamp
-# "a=-0.1, b={}, duration=0.2, width=0.1".format(cmd.get_var('SRS_voltage'))
+# "a=-0.1, b={}, duration=0.2, width=0.1".format(1e-3*cmd.get_var('SRS_voltage'))
 def action_list_init(act_lst):
     act_lst.add("AOM IR Horizontal freq", lib_action.DdsAction,
                 board="DDS37",
@@ -27,6 +27,7 @@ def action_list_init(act_lst):
                 var_formats=dict(frequency="%.2f"),
                 categories=["actions", "DDS"],
                 comment="MHz")
+                
     act_lst.add("AOM IR Vertical Amp", lib_action.DdsAction,
                 board="DDS37",
                 parameters=dict(channel=2),
@@ -34,6 +35,7 @@ def action_list_init(act_lst):
                 var_formats=dict(amplitude="%d"),
                 categories=["actions", "DDS"],
                 comment="1,10,20,...1000")
+                
     act_lst.add("DDS37 LUT", lib_action.DdsAction,
                 board="DDS37",
                 parameters=dict(),
@@ -610,6 +612,25 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[2], status=[False]),
 		categories=["actions", "TTL"])
 
+    act_lst.add("TTL GM Repumper ON", lib_action.DigitalAction,
+		board="TTL2",
+		parameters=dict(channel=[3], status=[True]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL GM Repumper OFF", lib_action.DigitalAction,
+		board="TTL2",
+		parameters=dict(channel=[3], status=[False]),
+		categories=["actions", "TTL"])
+		
+    act_lst.add("TTL ProbeHor OFF", lib_action.DigitalAction,
+		board="TTL2",
+		parameters=dict(channel=[4], status=[False]),
+		categories=["actions", "TTL"])
+
+    act_lst.add("TTL ProbeHor ON", lib_action.DigitalAction,
+		board="TTL2",
+		parameters=dict(channel=[4], status=[True]),
+		categories=["actions", "TTL"])
 
     act_lst.add("TTL Picture  ON", lib_action.DigitalAction,
 		board="TTL2",
@@ -631,31 +652,6 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[6], status=[False]),
 		categories=["actions", "TTL"])
 
-
-    act_lst.add("TTL GM Repumper ON", lib_action.DigitalAction,
-		board="TTL2",
-		parameters=dict(channel=[3], status=[True]),
-		categories=["actions", "TTL"])
-
-    act_lst.add("TTL GM Repumper OFF", lib_action.DigitalAction,
-		board="TTL2",
-		parameters=dict(channel=[3], status=[False]),
-		categories=["actions", "TTL"])
-
-    act_lst.add("TTL Test Trigger ON", lib_action.DigitalAction,
-		board="TTL2",
-		parameters=dict(channel=[4], status=[True]),
-		categories=["actions", "TTL"])
-
-    act_lst.add("TTL Test Trigger OFF", lib_action.DigitalAction,
-		board="TTL2",
-		parameters=dict(channel=[4], status=[False]),
-		categories=["actions", "TTL"])
-
-
-
-
-
     act_lst.add("Breakpoint Source Table ON", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[7], status=[True]),
@@ -666,12 +662,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[7], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL 2 Ch8 ON", lib_action.DigitalAction,
+    act_lst.add("TTL ProbeVert ON", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[8], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL 2 Ch8 OFF", lib_action.DigitalAction,
+    act_lst.add("TTL ProbeVert OFF", lib_action.DigitalAction,
 		board="TTL2",
 		parameters=dict(channel=[8], status=[False]),
 		categories=["actions", "TTL"])
@@ -952,7 +948,7 @@ def action_list_init(act_lst):
 #    act_lst.add("DAC 3DMOT Coils Current", lib_action.EmptyAction)
 
 
-    act_lst.add("DAC uW 2", lib_action.AnalogAction,
+    act_lst.add("DAC BGradX", lib_action.AnalogAction,
                 board="ANG14",
                 parameters=dict(),
                 variables=dict(value=0),
@@ -972,7 +968,7 @@ def action_list_init(act_lst):
 
     act_lst.add("DAC BComp2", lib_action.EmptyAction)
 
-    act_lst.add("DAC BCompZ", lib_action.AnalogAction,
+    act_lst.add("DAC BCompX", lib_action.AnalogAction,
                 board="ANG16",
                 parameters=dict(),
                 variables=dict(value=0),

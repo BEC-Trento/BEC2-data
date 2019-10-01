@@ -23,3 +23,18 @@ def program(prg, cmd):
     prg.add(149483790, "Set_MOT", functions=dict(time=lambda x: x +cmd.get_var('tof') + cmd.get_var('hold_time')))
     prg.add(149483790, "Set_BrightMOT", enable=False)
     return prg
+def commands(cmd):
+    import numpy as np
+    iters = np.arange(0.000000, 50.000000, 4.000000)
+    j = 0
+    while(cmd.running):
+        print('\n-------o-------')
+        hold_time1 = iters[j]
+        cmd.set_var('hold_time', hold_time1)
+        print('\n')
+        print('Run #%d/%d, with variables:\nhold_time = %g\n'%(j+1, len(iters), hold_time1))
+        cmd.run(wait_end=True, add_time=100)
+        j += 1
+        if j == len(iters):
+            cmd.stop()
+    return cmd

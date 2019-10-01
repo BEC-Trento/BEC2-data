@@ -10,7 +10,7 @@ def program(prg, cmd):
     prg.add(135060000, "Switch Off MOT_fast")
     prg.add(135061250, "GM_051018")
     prg.add(135111250, "Oscilloscope Trigger OFF")
-    prg.add(135111480, "Picture_Na_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')))
+    prg.add(135111480, "Picture_Na_VarProbeDet", functions=dict(time=lambda x: x+cmd.get_var('tof')), enable=False)
     prg.add(140111480, "Set_MOT")
     prg.add(140111480, "Set_BrightMOT", enable=False)
     return prg

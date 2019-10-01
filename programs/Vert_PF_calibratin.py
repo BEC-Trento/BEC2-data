@@ -2,17 +2,16 @@ prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
     prg.add(0, "Initialize 0 TTL and Synchronize.sub")
-    prg.add(50000, "Switch Off MOT")
-    prg.add(5060000, "Set_BrightMOT", enable=False)
-    prg.add(5060000, "Set_MOT")
-    prg.add(135060000, "Switch Off MOT")
-    prg.add(135065340, "three-pictures_VarProbeDet_190625")
-    prg.add(140065340, "Set_MOT")
-    prg.add(140065340, "Set_BrightMOT", enable=False)
+    prg.add(100000, "Shutter Probe Vert ON")
+    prg.add(101000, "Shutter Probe Hor ON")
+    prg.add(20101000, "Oscilloscope Trigger ON")
+    prg.add(20101100, "Probe_pulse")
+    prg.add(25106100, "Oscilloscope Trigger OFF")
+    prg.add(25218600, "test_pictures")
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.arange(0.000000, 100.000000, 5.000000)
+    iters = np.arange(0.000000, 1000.000000, 50.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):

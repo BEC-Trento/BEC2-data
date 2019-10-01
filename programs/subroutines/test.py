@@ -5,13 +5,14 @@ def program(prg, cmd):
     prg.add(10000, "uW mixin frequency", 234.00, enable=False)
     prg.add(20000, "uW2 mixin amplitude", 345, enable=False)
     prg.add(30000, "uW2 mixin frequency", 456.00, enable=False)
-    prg.add(50030000, "DDS41_setfull", ch1_freq=20000000.000, ch0_amp=1000, ch0_freq=1000000.000, ch0_phase=0.000, ch1_phase=0.000, ch1_amp=1, functions=dict(ch1_freq=lambda x: 100e6 + cmd.get_var('uW_freq2')*1e3 + cmd.get_var('uW_Delta')*1e3, ch0_freq=lambda x: 100e6 + cmd.get_var('uW_freq1')*1e3 + cmd.get_var('uW_Delta')*1e3))
-    prg.add(50040000, "TTL uW 1 (100W) ON")
-    prg.add(150040000, "TTL uW 1 (100W) OFF")
-    prg.add(150059000, "Oscilloscope Trigger ON")
-    prg.add(150060000, "DDS41_setfull", ch0_amp=200, ch0_freq=2000000.000, ch1_freq=10.000, ch0_phase=0.000, ch1_phase=0.000, ch1_amp=1)
-    prg.add(150070000, "Oscilloscope Trigger OFF")
-    prg.add(150080000, "three-pictures_VarProbeDet_190625")
+    prg.add(50030000, "DDS41_setfull", ch1_freq=20000000.000, ch0_amp=1000, ch0_freq=5000000.000, ch0_phase=0.000, ch1_phase=0.000, ch1_amp=1, functions=dict(ch1_freq=lambda x: 100e6 + cmd.get_var('uW_freq2')*1e3 + cmd.get_var('uW_Delta')*1e3, ch0_freq=lambda x: 100e6 + cmd.get_var('uW_freq1')*1e3 + cmd.get_var('uW_Delta')*1e3, funct_enable=False))
+    prg.add(50040000, "Oscilloscope Trigger ON")
+    prg.add(50040050, "TTL uW 1 (100W) ON")
+    prg.add(50050050, "TTL uW 1 (100W) OFF")
+    prg.add(50069050, "Oscilloscope Trigger ON", enable=False)
+    prg.add(50070050, "DDS41_setfull", ch0_amp=200, ch0_freq=2000000.000, ch1_freq=10.000, ch0_phase=0.000, ch1_phase=0.000, ch1_amp=1, enable=False)
+    prg.add(50080050, "Oscilloscope Trigger OFF")
+    prg.add(50090050, "three-pictures_VarProbeDet_190625", enable=False)
     return prg
 def commands(cmd):
     import numpy as np

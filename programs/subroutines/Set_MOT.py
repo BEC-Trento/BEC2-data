@@ -11,6 +11,7 @@ def program(prg, cmd):
     prg.add(2000, "DAC MT-MOT Current", 30.0000, functions=dict(value=lambda x: cmd.get_var('mot_I'), funct_enable=False))
     prg.add(10000, "AOM Zeeman Slower freq", 170.00)
     prg.add(13000, "AOM Probe Amp ch1 (+)", 0)
+    prg.add(14000, "AOM Probe Detuning", 100.000)
     prg.add(16000, "AOM Probe Amp ch2 (-)", 0)
     prg.add(22000, "AOM 2DMOT Amp ch1 (+)", 1000)
     prg.add(25000, "AOM 2DMOT Amp ch2 (-)", 1000)
@@ -37,5 +38,6 @@ def program(prg, cmd):
     prg.add(62000, "phase imprint OFF")
     prg.add(64000, "shutter MOT open")
     prg.add(67000, "Config Field MT-MOT")
-    prg.add(74000, "TTL GM Repumper OFF")
+    prg.add(68000, "TTL GM Repumper OFF")
+    prg.add(69000, "Set_BComp")
     return prg
