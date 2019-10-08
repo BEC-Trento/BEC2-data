@@ -14,5 +14,6 @@ def program(prg, cmd):
     prg.add(3000, "AOM Push Amp ch1 (+)", 1)
     prg.add(3500, "AOM 2DMOT Amp ch2 (-)", 1)
     prg.add(4000, "AOM 2DMOT Amp ch1 (+)", 1)
-    prg.add(500000, "TTL MirrorBottom Probe", enable=False)
+    prg.add(4500, "AOM Repumper freq", 300.00)
+    prg.add(500000, "TTL MirrorBottom Probe")
     return prg

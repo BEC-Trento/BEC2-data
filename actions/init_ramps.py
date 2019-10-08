@@ -31,7 +31,16 @@ def action_list_init(action_list):
             func="(a - b * exp(-duration**2 / width**2)) / (1 - exp(-duration**2 / width**2)) + ((b - a) / (1 - exp(-duration**2 / width**2))) * exp(-(t - duration)**2 / width**2)", func_args="a=0, b=1, duration=1, width=0.5"),
             var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
             comment="time")
-                    
+
+    action_list.add(
+        "MT Current HalfGauss ramp", lib_ramp.FunctionRamp,
+        categories=["func"], 
+        parameters=dict(act_name="DAC MT-MOT Current", act_var_name="value", act_parameters={}),
+        variables=dict(
+            start_t=0, stop_t=100, n_points=100,
+            func="(a - b * exp(-duration**2 / width**2)) / (1 - exp(-duration**2 / width**2)) + ((b - a) / (1 - exp(-duration**2 / width**2))) * exp(-(t - duration)**2 / width**2)", func_args="a=0, b=1, duration=1, width=0.5"),
+            var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
+            comment="time")                
 #                    action_list.add("DAC SRS ramp", lib_ramp.LinearRamp,
 #                    categories=["ramps"],
 #                    parameters=dict(act_name="DAC SRS", act_var_name="value"),
