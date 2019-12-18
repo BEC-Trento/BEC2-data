@@ -157,18 +157,27 @@ def action_list_init(action_list):
                     variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
                     comment="")
 
+    action_list.add("DDS41_ch0amp_ramp", lib_ramp.LinearRamp,
+                    categories=["ramps"],
+                    parameters=dict(act_name="uW mixin amplitude", act_var_name="amplitude"),
+                    variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
+                    comment="")
+
+    action_list.add("DDS41_ch1amp_ramp", lib_ramp.LinearRamp,
+                    categories=["ramps"],
+                    parameters=dict(act_name="uW2 mixin amplitude", act_var_name="amplitude"),
+                    variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
+                    comment="")
+                    
     action_list.add("DAC Horiz IR Exp ramp",
                     lib_ramp.FunctionRamp,
                     categories = ["func"],
                     parameters=dict(act_name="DAC Horiz IR", act_var_name="value", act_parameters={}),
                     variables=dict( start_t=0,
                                     stop_t=0,
-#                                    start_value=0,
-#                                    offset=0,
-#                                    tau=0,
                                     n_points=1,
-                                    func="(start_value-offset)*exp(-t/tau)+offset",
-                                    func_args='start_value=1, tau=1, offset=0'),
+                                    func="(b - a * exp(-duration / tau) + (a - b) * exp(-t / tau)) / (1 - exp(-duration / tau))",
+                                    func_args='a=1, b=1, duration=1, tau'),
                     var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
                     comment="time")  
     action_list.add("DAC IR Horiz_Ellipt Exp ramp",

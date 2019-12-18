@@ -1,7 +1,6 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
-    prg.add(-2990000, "Shutter RepumperMOT OFF", enable=False)
     prg.add(-2500000, "TTL MirrorBottom MOT")
     prg.add(-2001000, "TTL Relay Upper Coil CLOSE")
     prg.add(-2000000, "TTL Relay Lower Coil CLOSE")

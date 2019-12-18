@@ -108,7 +108,7 @@ def board_list_init(board_lst):
                   parameters=dict(amp_to_lut={1: lambda x: 799 + int(x/10), 2: lambda x: 900 + int(x/10)},
                                   freq_to_lut={1: lambda x: 401 + int(x/(4*0.125))}))
    
-    board_lst.add("DDS41", lib_board.DdsBoard,
+    board_lst.add("dds41", lib_board.DdsBoard,
                   address=41,
                   parameters=dict(amp_to_lut={1: lambda x: (int(x)+4000)*1.0/10, 2: lambda x: (int(x)+4000)*1.0/10 +500},
                                   freq_to_lut={1: lambda x: (float(x)/2-59.75)*1.0/0.25, 2: lambda x: (float(x)/2 -59.75)*1.0/0.25 +500}))
@@ -123,17 +123,17 @@ def board_list_init(board_lst):
 
 ############   TTL    #################
 
-    board_lst.add("TTL1",
+    board_lst.add("ttl1",
                   lib_board.DigitalBoard,
                   address=1,
                   comment="arbitrary board description")
 
-    board_lst.add("TTL2",
+    board_lst.add("ttl2",
                   lib_board.DigitalBoard,
                   address=2,
                   comment="arbitrary board description")
 
-    board_lst.add("TTL3",
+    board_lst.add("ttl3",
                   lib_board.DigitalBoard,
                   address=3,
                   comment="arbitrary board description")

@@ -36,3 +36,21 @@ def program(prg, cmd):
     prg.add(300000, "AOM PhaseImprint Amp", 1000)
     prg.add(301000, "AOM PhaseImprint freq", 80.00)
     return prg
+def commands(cmd):
+    import numpy as np
+    iters = np.arange(0, 1, 0.1)
+    np.random.shuffle(iters)
+    j = 0
+    while(cmd.running):
+        print('\n-------o-------')
+        PI_time = iters[j]
+        cmd.set_var('PI_time', PI_time)
+        print('\n')
+        print('Run #%d/%d, with variables:\nPI_time = %g\n'%(j+1, len(iters), PI_time))
+        cmd._system.run_number = j
+        cmd.run(wait_end=True, add_time=100)
+        j += 1
+        if j == len(iters):
+            cmd._system.run_number = 0
+            cmd.stop()
+    return cmd
