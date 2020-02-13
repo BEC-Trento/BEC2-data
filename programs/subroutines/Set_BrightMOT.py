@@ -4,7 +4,6 @@ def program(prg, cmd):
     prg.add(0, "AOM Zeeman Slower Amp", 1000)
     prg.add(1000, "DAC MT-MOT Current", 20.0000)
     prg.add(2000, "DAC MT-MOT Voltage", 5.0000)
-    prg.add(3000, "Compensate_external_Mag_Field")
     prg.add(5500, "shutter Bright MOT open")
     prg.add(6000, "AOM Zeeman Slower freq", 170.00)
     prg.add(9000, "AOM Probe Amp ch1 (+)", 1000)

@@ -715,12 +715,12 @@ def action_list_init(act_lst):
 
     act_lst.add("Shutter 2D MOT/ZS OFF", lib_action.DigitalAction,
 		board="ttl2",
-		parameters=dict(channel=[9], status=[True]),
+		parameters=dict(channel=[9], status=[False]),
 		categories=["actions", "TTL"])
 
     act_lst.add("Shutter 2D MOT/ZS ON", lib_action.DigitalAction,
 		board="ttl2",
-		parameters=dict(channel=[9], status=[False]),
+		parameters=dict(channel=[9], status=[True]),
 		categories=["actions", "TTL"])
 
 
@@ -1014,8 +1014,21 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="-10 - 10V")
 
+    act_lst.add("DAC 100W_amplitude", lib_action.AnalogAction,
+                board="ANG21",
+                parameters=dict(),
+                variables=dict(value=0),
+                var_formats=dict(value="%.4f"),
+                categories=["actions", "analog"],
+                comment="0 - 10V")
 
-
+    act_lst.add("DAC 22", lib_action.AnalogAction,
+                board="ANG22",
+                parameters=dict(),
+                variables=dict(value=0),
+                var_formats=dict(value="%.4f"),
+                categories=["actions", "analog"],
+                comment="-10 - 10V")
 
     act_lst.add("ANG60", lib_action.AnalogAction,
                 board="ANG60",

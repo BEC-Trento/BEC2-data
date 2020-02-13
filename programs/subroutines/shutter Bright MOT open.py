@@ -7,6 +7,5 @@ def program(prg, cmd):
     prg.add(700, "Shutter Push ON")
     prg.add(800, "Shutter Probe Hor OFF")
     prg.add(900, "Shutter probe Vert OFF")
-    prg.add(1000, "Shutter DS OFF")
-    prg.add(1200, "Shutter RepumperMOT ON")
+    prg.add(1200, "Shutter DS-Repumper ON")
     return prg

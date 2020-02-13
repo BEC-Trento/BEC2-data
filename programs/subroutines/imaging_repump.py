@@ -13,5 +13,5 @@ def program(prg, cmd):
     prg.add(1300, "AOM DS + RepumperMOT Amp ", 0)
     prg.add(2000, "Shutter DS-Repumper OFF")
     prg.add(100000, "TTL Dark Spot ON")
-    prg.add(100500, "AOM DS + RepumperMOT Amp ", 1000)
+    prg.add(100500, "AOM DS + RepumperMOT Amp ", 600)
     return prg

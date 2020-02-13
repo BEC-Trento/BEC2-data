@@ -6,4 +6,5 @@ def program(prg, cmd):
     prg.add(20, "TTL uW 3 OFF")
     prg.add(30, "TTL uW 4 OFF")
     prg.add(40, "TTL uW coupling OFF")
+    prg.add(50, "DAC 100W_amplitude", 0.0000)
     return prg
