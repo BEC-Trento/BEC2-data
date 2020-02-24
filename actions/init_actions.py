@@ -429,12 +429,12 @@ def action_list_init(act_lst):
 
     act_lst.add("IGBT BCompZfine OPEN", lib_action.DigitalAction,
 		board="ttl1",
-		parameters=dict(channel=[2], status=[False]),
+		parameters=dict(channel=[2], status=[True]),
 		categories=["actions", "TTL"])
 
     act_lst.add("IGBT BCompZfine CLOSE", lib_action.DigitalAction,
 		board="ttl1",
-		parameters=dict(channel=[2], status=[True]),
+		parameters=dict(channel=[2], status=[False]),
 		categories=["actions", "TTL"])
 
     act_lst.add("Relay AntiHelm CLOSE", lib_action.DigitalAction,
