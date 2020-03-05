@@ -6,7 +6,7 @@ def program(prg, cmd):
     prg.add(-10000, "TTL Picture Hamamatsu  ON", 'PTAI_p1')
     prg.add(-400, "Oscilloscope Trigger ON", enable=False)
     prg.add(-100, "transfer_m1to0", enable=False)
-    prg.add(-100, "transfer_p1to0", enable=False)
+    prg.add(-100, "transfer_p1to0")
     prg.add(-100, "transfer_0to0", enable=False)
     prg.add(0, "hamam_twofastpictures")
     prg.add(5000, "TTL Picture Hamamatsu  ON", 'PTAI_m1')

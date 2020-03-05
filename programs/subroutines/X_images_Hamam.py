@@ -9,7 +9,7 @@ def program(prg, cmd):
   
     for i in range(int(cmd.get_var('x'))):
 #        prg.add(1400, "transfer_m1m2", functions=dict(time=lambda x: x + i*cmd.get_var('img_delay')))
-        prg.add(1400, "transfer_p1to0", functions=dict(time=lambda x: x + i*cmd.get_var('img_delay')))
+        # prg.add(1400, "transfer_p1to0", functions=dict(time=lambda x: x + i*cmd.get_var('img_delay')))
         prg.add(-1500, "TTL Picture Hamamatsu  ON", functions=dict(time=lambda x: x + i*cmd.get_var('img_delay'), comment=lambda x: 'ximag_atoms_{}'.format(i) ))
         prg.add(1500, "Probe_pulse_Hamam", functions=dict(time=lambda x: x + i*cmd.get_var('img_delay')))
     

@@ -437,12 +437,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[2], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Relay AntiHelm CLOSE", lib_action.DigitalAction,
+    act_lst.add("ttl_phase_imprint ON", lib_action.DigitalAction,
 		board="ttl1",
 		parameters=dict(channel=[3], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Relay AntiHelm OPEN", lib_action.DigitalAction,
+    act_lst.add("ttl_phase_imprint OFF", lib_action.DigitalAction,
 		board="ttl1",
 		parameters=dict(channel=[3], status=[False]),
 		categories=["actions", "TTL"])
@@ -540,12 +540,12 @@ def action_list_init(act_lst):
                 parameters=dict(channel=[11], status=[False]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT BGradY field OPEN", lib_action.DigitalAction,
+    act_lst.add("IGBT BGradY OPEN", lib_action.DigitalAction,
                 board="ttl1",
                 parameters=dict(channel=[12], status=[False]),
                 categories=["actions", "TTL"])
 
-    act_lst.add("IGBT BGradY field CLOSE", lib_action.DigitalAction,
+    act_lst.add("IGBT BGradY CLOSE", lib_action.DigitalAction,
                 board="ttl1",
                 parameters=dict(channel=[12], status=[True]),
                 categories=["actions", "TTL"])
@@ -947,8 +947,6 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="-10 - 10V")
 
-#    act_lst.add("DAC 3DMOT Coils Current", lib_action.EmptyAction)
-
 
     act_lst.add("DAC BGradX", lib_action.AnalogAction,
                 board="ANG14",
@@ -958,7 +956,14 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC BComp1", lib_action.EmptyAction)
+    act_lst.add("DAC BCompX", lib_action.AnalogAction,
+                board="ANG22",
+                parameters=dict(),
+                variables=dict(value=0),
+                var_formats=dict(value="%.4f"),
+                categories=["actions", "analog"],
+                comment="0 - 10V")
+
 
     act_lst.add("DAC BCompY", lib_action.AnalogAction,
                 board="ANG15",
@@ -968,9 +973,8 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC BComp2", lib_action.EmptyAction)
 
-    act_lst.add("DAC BCompX", lib_action.AnalogAction,
+    act_lst.add("DAC BGradY", lib_action.AnalogAction,
                 board="ANG16",
                 parameters=dict(),
                 variables=dict(value=0),
@@ -978,7 +982,6 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC Magnetic Trap current", lib_action.EmptyAction)
 
     act_lst.add("DAC MT-MOT Current", lib_action.AnalogAction,
                 board="ANG17",
@@ -987,8 +990,6 @@ def action_list_init(act_lst):
                 var_formats=dict(value="%.4f"),
                 categories=["actions", "analog"],
                 comment="0 - 10V")
-
-    act_lst.add("DAC Magnetic Trap Voltage", lib_action.EmptyAction)
 
     act_lst.add("DAC MT-MOT Voltage", lib_action.AnalogAction,
                 board="ANG18",
@@ -1021,14 +1022,6 @@ def action_list_init(act_lst):
                 var_formats=dict(value="%.4f"),
                 categories=["actions", "analog"],
                 comment="0 - 10V")
-
-    act_lst.add("DAC 22", lib_action.AnalogAction,
-                board="ANG22",
-                parameters=dict(),
-                variables=dict(value=0),
-                var_formats=dict(value="%.4f"),
-                categories=["actions", "analog"],
-                comment="-10 - 10V")
 
     act_lst.add("ANG60", lib_action.AnalogAction,
                 board="ANG60",

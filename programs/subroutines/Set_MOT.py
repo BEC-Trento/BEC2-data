@@ -37,25 +37,7 @@ def program(prg, cmd):
     prg.add(62000, "phase imprint OFF")
     prg.add(64000, "shutter MOT open")
     prg.add(67000, "Config Field MT-MOT")
-    prg.add(67800, "IGBT BCompZfine OPEN")
+    prg.add(67800, "Set_BCompMOT")
     prg.add(68000, "TTL GM Repumper OFF")
     prg.add(69000, "Set_BComp")
     return prg
-def commands(cmd):
-    import numpy as np
-    iters = np.linspace(0.000000, 20.000000, 15.000000)
-    np.random.shuffle(iters)
-    j = 0
-    while(cmd.running):
-        print('\n-------o-------')
-        hold_time = iters[j]
-        cmd.set_var('hold_time', hold_time)
-        print('\n')
-        print('Run #%d/%d, with variables:\nhold_time = %g\n'%(j+1, len(iters), hold_time))
-        cmd._system.run_number = j
-        cmd.run(wait_end=True, add_time=100)
-        j += 1
-        if j == len(iters):
-            cmd._system.run_number = 0
-            cmd.stop()
-    return cmd

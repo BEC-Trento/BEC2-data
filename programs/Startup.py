@@ -4,8 +4,6 @@ def program(prg, cmd):
     prg.add(0, "Initialize 0 TTL and Synchronize.sub")
     prg.add(50000, "AOM Zeeman Slower Amp", 1000)
     prg.add(50500, "Config field OFF")
-    prg.add(53000, "DAC Magnetic Trap Voltage")
-    prg.add(53500, "DAC Magnetic Trap current")
     prg.add(63000, "AOM Zeeman Slower freq", 170.00)
     prg.add(73000, "AOM Probe Amp ch1 (+)", 1000)
     prg.add(83000, "AOM Probe Amp ch2 (-)", 1000)

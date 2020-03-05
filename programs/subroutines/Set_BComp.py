@@ -8,6 +8,6 @@ def program(prg, cmd):
     prg.add(1200, "IGBT BcompY OPEN")
     prg.add(1300, "IGBT BGradX OPEN")
     prg.add(1400, "IGBT BGradZ OPEN")
-    prg.add(1500, "IGBT BGradY field OPEN")
+    prg.add(1500, "IGBT BGradY OPEN")
     prg.add(1600, "IGBT BcompX OPEN")
     return prg

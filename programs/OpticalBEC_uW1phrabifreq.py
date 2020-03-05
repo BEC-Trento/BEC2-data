@@ -13,9 +13,9 @@ def program(prg, cmd):
     prg.add(182226400, "soliton_imaging", enable=False)
     prg.add(182226400, "transfer_m1to0", enable=False)
     prg.add(182236400, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(182256400, "transfer_m1to0", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
     prg.add(182276940, "Oscilloscope Trigger ON", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
     prg.add(182277500, "transfer_m1m2", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
-    prg.add(182277500, "transfer_m1to0", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
     prg.add(182277500, "transfer_p1p2", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
     prg.add(182277600, "transfer_p1to0", enable=False)
     prg.add(182277600, "transfer_0to0", enable=False)
@@ -35,15 +35,15 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.linspace(0.000000, 20.000000, 15.000000)
+    iters = np.linspace(1.000000, 3.000000, 10.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
         print('\n-------o-------')
-        hold_time = iters[j]
-        cmd.set_var('hold_time', hold_time)
+        uW_pulse = iters[j]
+        cmd.set_var('uW_pulse', uW_pulse)
         print('\n')
-        print('Run #%d/%d, with variables:\nhold_time = %g\n'%(j+1, len(iters), hold_time))
+        print('Run #%d/%d, with variables:\nuW_pulse = %g\n'%(j+1, len(iters), uW_pulse))
         cmd._system.run_number = j
         cmd.run(wait_end=True, add_time=100)
         j += 1

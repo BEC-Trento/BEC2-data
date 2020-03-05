@@ -145,9 +145,15 @@ def action_list_init(action_list):
                     variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
                     comment="")
                     
-    action_list.add("BGradX current ramp", lib_ramp.LinearRamp,
+    action_list.add("DAC BGradX ramp", lib_ramp.LinearRamp,
                     categories=["ramps"],
                     parameters=dict(act_name="DAC BGradX", act_var_name="value"),
+                    variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
+                    comment="")
+                   
+    action_list.add("DAC BGradY ramp", lib_ramp.LinearRamp,
+                    categories=["ramps"],
+                    parameters=dict(act_name="DAC BGradY", act_var_name="value"),
                     variables=dict(start_x=0, stop_x=0, start_t=0, stop_t=0, n_points=1),
                     comment="")
                     
@@ -209,5 +215,6 @@ def action_list_init(action_list):
                                     func_args='start_value=1, tau=1, offset=0'),
                     var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
                     comment="time")
+
 
 
