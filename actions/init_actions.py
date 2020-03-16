@@ -391,7 +391,22 @@ def action_list_init(act_lst):
                 var_formats=dict(ch0_freq="%.3f", ch0_amp="%d", ch0_phase="%.3f", ch1_freq="%.3f", ch1_amp="%d", ch1_phase="%.3f"),
                 categories=["actions", "DDS"],
                 comment="CH1 0 to 1000, CH2 free")
-               
+
+#    act_lst.add("DDS41_setnotrigger", lib_action.FullDdsAction,
+#                board="dds41",
+#                parameters=dict(realtime=True),
+#                variables=dict(ch0_freq=0, ch0_amp=0, ch0_phase=0, ch1_freq=0, ch1_amp=0, ch1_phase=0),
+#                var_formats=dict(ch0_freq="%.3f", ch0_amp="%d", ch0_phase="%.3f", ch1_freq="%.3f", ch1_amp="%d", ch1_phase="%.3f"),
+#                categories=["actions", "DDS"],
+#                comment="CH1 0 to 1000, CH2 free")
+
+#    act_lst.add("DDS41_trigger", lib_action.FullDdsAction,
+#            board="dds41",
+#            parameters=dict(trigger=True),
+#            variables=dict(),
+#            var_formats=dict(),
+#            categories=["actions", "DDS"],
+#            comment="")             
 
 ###TTL###
 

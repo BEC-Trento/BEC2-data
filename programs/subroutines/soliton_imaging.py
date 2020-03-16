@@ -1,6 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
+    prg.add(-12000, "Probe_pulse_cleaning")
     prg.add(-5000, "AOM Probe Detuning", -1.000, functions=dict(frequency=lambda x: cmd.get_var('probe_det'), funct_enable=False))
     prg.add(-2500, "TTL uW 1 (100W) OFF")
     prg.add(-1600, "TTL uW 2 OFF", enable=False)
