@@ -3,11 +3,11 @@ prg_version = "0.7"
 def program(prg, cmd):
     prg.add(0, "OpticalBEC_2019-10-15")
     prg.add(180100000, "multi_images_Hamam", enable=False)
-    prg.add(180110000, "+-1_mixture_preparation")
+    prg.add(180110000, "+-1_mixture_preparation", enable=False)
     prg.add(182310000, "Switch Off Dipole", enable=False)
     prg.add(182321000, "Oscilloscope Trigger ON")
     prg.add(182331000, "two_photon_pulse_DDS", enable=False)
-    prg.add(182333200, "three_pictures_hamamatsu")
+    prg.add(182333200, "three_pictures_hamamatsu", enable=False)
     prg.add(182824200, "TOF_Levitation", functions=dict(time=lambda x: x + cmd.get_var('uW_pulse'), funct_enable=False))
     prg.add(182825400, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('uW_pulse'), funct_enable=False))
     prg.add(182829312, "imaging_repump", functions=dict(time=lambda x: x + cmd.get_var('tof')))

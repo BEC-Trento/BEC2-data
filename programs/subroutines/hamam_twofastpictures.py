@@ -5,7 +5,7 @@ def program(prg, cmd):
     prg.add(-4000, "TTL ProbeHor OFF")
     prg.add(-3990, "TTL ProbeVert OFF")
     prg.add(-3500, "AOM Probe Amp ch2 (-)", 1000)
-    prg.add(-3000, "AOM Probe Amp ch1 (+)", 1000)
+    prg.add(-3000, "AOM Probe Amp ch1 (+)", 1000, functions=dict(amplitude=lambda x: cmd.get_var('amp'), funct_enable=False))
     prg.add(0, "TTL ProbeVert ON")
     prg.add(50, "TTL ProbeVert OFF")
     prg.add(6150, "TTL ProbeVert ON")
