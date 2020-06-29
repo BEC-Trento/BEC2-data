@@ -14,7 +14,7 @@ def program(prg, cmd):
     prg.add(92218750, "DAC Horiz IR", 0.0000, functions=dict(value=lambda x: cmd.get_var('CigarV')))
     prg.add(92219250, "AOM IR Horizontal Amp", 1000)
     prg.add(92219750, "AOM IR Horizontal freq", 80.00)
-    prg.add(92220250, "DAC Vert IR", 2.0000)
+    prg.add(92220250, "DAC Vert IR", 2.0000, functions=dict(value=lambda x: cmd.get_var('XaxisTrap_V')))
     prg.add(92220750, "AOM IR Vertical Amp", 1000)
     prg.add(92221250, "AOM IR Vertical freq", 80.00)
     prg.add(92222500, "IGBT BCompY CLOSE")
@@ -35,5 +35,6 @@ def program(prg, cmd):
     prg.add(168976200, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
     prg.add(170086440, "DAC Horiz IR Exp ramp", start_t=0.0000, func_args="a=0.6, b=0.06, duration=1, tau=0.2", n_points=1500, func="(b - a * exp(-duration / tau) + (a - b) * exp(-t / tau)) / (1 - exp(-duration / tau))", stop_t=1000.0000, functions=dict(func_args=lambda x: 'a={0}, b={1}, duration=1, tau=0.2'.format(0.6, cmd.get_var('Cigar_end'))))
     prg.add(170088940, "Oscilloscope Trigger ON", enable=False)
-    prg.add(180097440, "wait")
+    prg.add(180100000, "IR Horizontal HalfGauss ramp", start_t=0.0000, func_args="a=0, b=1, duration=1, width=0.5", n_points=200, func="(a - b * exp(-duration**2 / width**2)) / (1 - exp(-duration**2 / width**2)) + ((b - a) / (1 - exp(-duration**2 / width**2))) * exp(-(t - duration)**2 / width**2)", stop_t=1000.0000, functions=dict(func_args=lambda x: 'a={0}, b={1}, duration=1, width=0.5'.format(cmd.get_var('Cigar_end'), cmd.get_var('Cigar_compressed'))))
+    prg.add(190101000, "wait")
     return prg

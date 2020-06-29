@@ -14,13 +14,13 @@ def program(prg, cmd):
     
     for i in range(_ramp_numpoint):
         
-        prg.add(0 + i*cmd.get_var('RRR_duration')/float(_ramp_numpoint)*1e4,
+        prg.add(0 + i*cmd.get_var('cc_ramplength')/float(_ramp_numpoint)*1e4,
             "DDS41_setfull",
             ch0_amp=cmd.get_var('uW_amp1'),
             ch0_freq=ch0_freqs[i],
             ch1_freq=ch1_freqs[i],
             ch0_phase=0.000,
-            ch1_phase=4096,
+            ch1_phase=0.000,
             ch1_amp=cmd.get_var('uW_amp2'),
             )
        

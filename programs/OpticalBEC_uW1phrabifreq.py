@@ -14,6 +14,7 @@ def program(prg, cmd):
     prg.add(182226400, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
     prg.add(182236400, "transfer_m1to0", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
     prg.add(182246400, "DDSpulse", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
+    prg.add(182246400, "interferometer", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
     prg.add(182249300, "Oscilloscope Trigger ON", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
     prg.add(182249400, "three_pictures_hamamatsu", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
     prg.add(182249400, "transfer_m1m2", functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
@@ -34,15 +35,15 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.linspace(0.000000, 0.300000, 12.000000)
+    iters = np.linspace(0.000000, 0.200000, 15.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
         print('\n-------o-------')
-        uW_pulse_p10 = iters[j]
-        cmd.set_var('uW_pulse_p10', uW_pulse_p10)
+        beating_pulse = iters[j]
+        cmd.set_var('beating_pulse', beating_pulse)
         print('\n')
-        print('Run #%d/%d, with variables:\nuW_pulse_p10 = %g\n'%(j+1, len(iters), uW_pulse_p10))
+        print('Run #%d/%d, with variables:\nbeating_pulse = %g\n'%(j+1, len(iters), beating_pulse))
         cmd._system.run_number = j
         cmd.run(wait_end=True, add_time=100)
         j += 1
