@@ -32,7 +32,7 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.linspace(0.000000, 1.000000, 10.000000)
+    iters = np.linspace(0.000000, 1.000000, 15.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):

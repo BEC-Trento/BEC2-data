@@ -11,22 +11,20 @@ def program(prg, cmd):
     prg.add(191311510, "TTL uW 1 (100W) OFF", functions=dict(time=lambda x: x + cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
     prg.add(191311520, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('uW_pulse') + cmd.get_var('hold_time')), enable=False)
     prg.add(191311760, "hamam_magnetiz_imaging", functions=dict(time=lambda x: x + cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
-    prg.add(191311760, "X_images_Hamam", enable=False)
     prg.add(191315520, "TTL uW 2 OFF", functions=dict(time=lambda x: x + cmd.get_var('uW_pulse') + cmd.get_var('hold_time')))
-    prg.add(193311760, "All uW OFF", functions=dict(time=lambda x: x+ cmd.get_var('hold_time')))
-    prg.add(193311860, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(193314460, "TOF_Levitation", functions=dict(time=lambda x: x+ cmd.get_var('hold_time')))
-    prg.add(193316445, "imaging_repump", functions=dict(time=lambda x: x + cmd.get_var('tof') + cmd.get_var('hold_time')), enable=False)
-    prg.add(193318319, "three-pictures_VarProbeDet_190625", functions=dict(time=lambda x: x + cmd.get_var('tof') + cmd.get_var('hold_time')), enable=False)
-    prg.add(193338319, "TTL Picture Hamamatsu  ON", 'emptyprobe', functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
-    prg.add(193354979, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time') +  cmd.get_var('cc_ramplength')))
-    prg.add(207338319, "Cigar_beam_check", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(207348319, "TTL uW 1 (100W) OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
-    prg.add(247348319, "wait")
+    prg.add(195315520, "All uW OFF", functions=dict(time=lambda x: x+ cmd.get_var('hold_time')))
+    prg.add(195315620, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(195318220, "TOF_Levitation", functions=dict(time=lambda x: x+ cmd.get_var('hold_time')))
+    prg.add(195320205, "imaging_repump", functions=dict(time=lambda x: x + cmd.get_var('tof') + cmd.get_var('hold_time')), enable=False)
+    prg.add(195322079, "three-pictures_VarProbeDet_190625", functions=dict(time=lambda x: x + cmd.get_var('tof') + cmd.get_var('hold_time')), enable=False)
+    prg.add(195342079, "TTL Picture Hamamatsu  ON", 'emptyprobe', functions=dict(time=lambda x: x + cmd.get_var('hold_time')), enable=False)
+    prg.add(195358739, "Oscilloscope Trigger OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time') +  cmd.get_var('cc_ramplength')))
+    prg.add(195368739, "TTL uW 1 (100W) OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(198368739, "Initialize_Dipole_Off", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.linspace(40.000000, 80.000000, 40.000000)
+    iters = np.linspace(0.000000, 60.000000, 61.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):
