@@ -1,7 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
-    prg.add(-3012000, "Shutter Probe Vert ON")
+    prg.add(-3012000, "Shutter Probe Vert ON", enable=False)
     prg.add(-100000, "DAC BCompY", 0.5000)
     prg.add(-3100, "AOM Probe Detuning", -28.500)
     prg.add(-2900, "TTL Picture Hamamatsu  ON", 'atoms', enable=False)

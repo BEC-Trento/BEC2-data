@@ -12,6 +12,7 @@ def action_list_init(act_lst):
                 var_formats=dict(frequency="%.2f"),
                 categories=["actions", "DDS"],
                 comment="MHz")
+                
     act_lst.add("AOM IR Horizontal Amp", lib_action.DdsAction,
                 board="DDS37",
                 parameters=dict(channel=1),
@@ -884,12 +885,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[11], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL RF-arp ON", lib_action.DigitalAction,
+    act_lst.add("TTL siglent1 ON", lib_action.DigitalAction,
 		board="ttl3",
 		parameters=dict(channel=[12], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL RF-arp OFF", lib_action.DigitalAction,
+    act_lst.add("TTL siglent1 OFF", lib_action.DigitalAction,
 		board="ttl3",
 		parameters=dict(channel=[12], status=[False]),
 		categories=["actions", "TTL"])
@@ -947,12 +948,12 @@ def action_list_init(act_lst):
                 comment="0 - 10 V")
 
     act_lst.add("DAC Horiz IR", lib_action.AnalogAction,
-                board="ANG12",
+                board="ANG20",
                 parameters=dict(),
                 variables=dict(value=0),
                 var_formats=dict(value="%.4f"),
                 categories=["actions", "analog"],
-                comment="0 - 10V")
+                comment="-10 - 10V")
 
     act_lst.add("DAC SRS", lib_action.AnalogAction,
                 board="ANG13",
@@ -1022,13 +1023,13 @@ def action_list_init(act_lst):
                 categories=["actions", "analog"],
                 comment="0 - 10V")
 
-    act_lst.add("DAC PiezoHorizEllipt", lib_action.AnalogAction,
-                board="ANG20",
-                parameters=dict(),
-                variables=dict(value=0),
-                var_formats=dict(value="%.4f"),
-                categories=["actions", "analog"],
-                comment="-10 - 10V")
+#    act_lst.add("DAC PiezoHorizEllipt", lib_action.AnalogAction,
+#                board="ANG20",
+#                parameters=dict(),
+#                variables=dict(value=0),
+#                var_formats=dict(value="%.4f"),
+#                categories=["actions", "analog"],
+#                comment="-10 - 10V")
 
     act_lst.add("DAC 100W_amplitude", lib_action.AnalogAction,
                 board="ANG21",

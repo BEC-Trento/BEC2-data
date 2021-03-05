@@ -10,8 +10,21 @@ import libraries.ramp as lib_ramp
 #                    var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
 #                    comment="time")
 
-def action_list_init(action_list):
 
+
+
+def action_list_init(action_list):
+#    action_list.add(
+#        "SRS_cosine_ramp", lib_ramp.FunctionRamp,
+#        categories=["func"], 
+#        parameters=dict(act_name="DAC SRS", act_var_name="value", act_parameters={}),
+#        variables=dict(
+#            start_t=0, stop_t=100, n_points=100,
+#            func="(a - b)*cos(Omega*t)", func_args="a=0, b=1, , width=0.5"),
+#            var_formats=dict(start_t="%.4f", stop_t="%.4f", n_points="%d", func="%s", func_args="%s"),
+#            comment="time")
+
+            
     action_list.add(
         "SRS HalfGauss Current ramp", lib_ramp.FunctionRamp,
         categories=["func"], 

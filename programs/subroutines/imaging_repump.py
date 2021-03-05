@@ -8,7 +8,7 @@ def program(prg, cmd):
     prg.add(-3000, "AOM Repumper freq", 225.00)
     prg.add(-2500, "AOM DS + RepumperMOT Freq", 408.00)
     prg.add(-2000, "AOM DS + RepumperMOT Amp ", 1000)
-    prg.add(-50, "TTL Repumper MOT  ON")
+    prg.add(-500, "TTL Repumper MOT  ON")
     prg.add(-10, "TTL Repumper MOT  ON", enable=False)
     prg.add(0, "TTL Repumper MOT OFF")
     prg.add(1300, "AOM DS + RepumperMOT Amp ", 0)

@@ -1,6 +1,7 @@
 prg_comment = ""
 prg_version = "0.7"
 def program(prg, cmd):
+    print cmd.get_var('img_delay')
     prg.add(-3250000, "TTL MirrorBottom Probe")
     prg.add(-3012000, "Shutter Probe Vert ON")
     prg.add(-4500, "AOM Probe Detuning", 0.000, functions=dict(frequency=lambda x: cmd.get_var('probe_det')))
