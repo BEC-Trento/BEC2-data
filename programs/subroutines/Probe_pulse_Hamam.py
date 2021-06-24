@@ -3,8 +3,8 @@ prg_version = "0.7"
 def program(prg, cmd):
     prg.add(-5028, "TTL ProbeVert OFF")
     prg.add(-5023, "TTL ProbeHor OFF")
-    prg.add(-4700, "AOM Probe Amp ch1 (+)", 1000)
-    prg.add(-4000, "AOM Probe Amp ch2 (-)", 1000, functions=dict(amplitude=lambda x: cmd.get_var('amp'), funct_enable=False))
+    prg.add(-4700, "AOM Probe Amp ch1 (+)", 150)
+    prg.add(-4000, "AOM Probe Amp ch2 (-)", 200, functions=dict(amplitude=lambda x: cmd.get_var('amp'), funct_enable=False))
     prg.add(0, "TTL ProbeVert ON")
     prg.add(50, "TTL ProbeVert OFF")
     prg.add(1100, "TTL Picture Hamamatsu OFF")

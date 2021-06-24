@@ -34,30 +34,9 @@ def program(prg, cmd):
     prg.add(61500, "TTL Repumper MOT OFF")
     prg.add(61500, "TTL Repumper MOT  ON", enable=False)
     prg.add(61800, "DAC SRS", -9.0000)
-    prg.add(62000, "phase imprint OFF")
     prg.add(64000, "shutter MOT open")
     prg.add(67000, "Config Field MT-MOT")
     prg.add(67800, "Set_BCompMOT")
     prg.add(68000, "TTL GM Repumper OFF")
     prg.add(69000, "Set_BComp")
     return prg
-def commands(cmd):
-    import numpy as np
-    SRS_V_arr, uW_delta3_arr = np.meshgrid(np.linspace(-1.000000, 1.000000, 15.000000), np.linspace(-1.000000, 1.000000, 5.000000), )
-    iters = list(zip(SRS_V_arr.ravel(), uW_delta3_arr.ravel()))
-    np.random.shuffle(iters)
-    j = 0
-    while(cmd.running):
-        print('\n-------o-------')
-        SRS_V, uW_delta3 = iters[j]
-        cmd.set_var('SRS_V', SRS_V)
-        cmd.set_var('uW_delta3', uW_delta3)
-        print('\n')
-        print('Run #%d/%d, with variables:\nSRS_V = %g\nuW_delta3 = %g\n'%(j+1, len(iters), SRS_V, uW_delta3))
-        cmd._system.run_number = j
-        cmd.run(wait_end=True, add_time=100)
-        j += 1
-        if j == len(iters):
-            cmd._system.run_number = 0
-            cmd.stop()
-    return cmd

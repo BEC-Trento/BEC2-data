@@ -6,7 +6,7 @@ def program(prg, cmd):
     prg.add(210102000, "Oscilloscope Trigger ON")
     prg.add(210112000, "Oscilloscope Trigger OFF")
     prg.add(210113000, "TTL siglent1 ON")
-    prg.add(210114000, "TTL siglent1 OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
+    prg.add(210113500, "TTL siglent1 OFF", functions=dict(time=lambda x: x + cmd.get_var('hold_time')))
     prg.add(212114100, "Switch Off Dipole", functions=dict(time=lambda x: x + cmd.get_var('hold_time')+cmd.get_var("uW_pulse")+cmd.get_var("uW_pulse2")))
     prg.add(212116110, "TOF_Levitation", functions=dict(time=lambda x: x+ cmd.get_var('hold_time')+cmd.get_var("uW_pulse")+cmd.get_var("uW_pulse2")))
     prg.add(212118095, "imaging_repump", functions=dict(time=lambda x: x + cmd.get_var('tof') + cmd.get_var('hold_time')+cmd.get_var("uW_pulse")+cmd.get_var("uW_pulse2")))
@@ -18,7 +18,7 @@ def program(prg, cmd):
     return prg
 def commands(cmd):
     import numpy as np
-    iters = np.linspace(2500.000000, 6000.000000, 21.000000)
+    iters = np.linspace(100.000000, 3000.000000, 15.000000)
     np.random.shuffle(iters)
     j = 0
     while(cmd.running):

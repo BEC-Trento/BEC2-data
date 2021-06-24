@@ -46,7 +46,7 @@ def action_list_init(act_lst):
                 comment="LUT")
 
     act_lst.add("AOM IR Horiz_Ellipt freq", lib_action.DdsAction,
-                board="DDS39",
+                board="dds39",
                 parameters=dict(channel=2),
                 variables=dict(frequency=0),
                 var_formats=dict(frequency="%.2f"),
@@ -54,29 +54,30 @@ def action_list_init(act_lst):
                 comment="MHz")
                 
     act_lst.add("AOM IR Horiz_Ellipt Amp", lib_action.DdsAction,
-                board="DDS39",
+                board="dds39",
                 parameters=dict(channel=2),
                 variables=dict(amplitude=0),
                 var_formats=dict(amplitude="%d"),
                 categories=["actions", "DDS"],
                 comment="1,10,20,...1000")
 
-    act_lst.add("AOM PhaseImprint freq", lib_action.DdsAction,
-                board="DDS39",
-                parameters=dict(channel=1),
-                variables=dict(frequency=0),
-                var_formats=dict(frequency="%.2f"),
-                categories=["actions", "DDS"],
-                comment="60 - 160 MHz")
+#    act_lst.add("AOM PhaseImprint freq", lib_action.DdsAction,
+#                board="DDS39",
+#                parameters=dict(channel=1),
+#                variables=dict(frequency=0),
+#                var_formats=dict(frequency="%.2f"),
+#                categories=["actions", "DDS"],
+#                comment="60 - 160 MHz")
+#                
+#    act_lst.add("AOM PhaseImprint Amp", lib_action.DdsAction,
+#                board="DDS39",
+#                parameters=dict(channel=1),
+#                variables=dict(amplitude=0),
+#                var_formats=dict(amplitude="%d"),
+#                categories=["actions", "DDS"],
+#                comment="1,10,20,...1000")           
+    
                 
-    act_lst.add("AOM PhaseImprint Amp", lib_action.DdsAction,
-                board="DDS39",
-                parameters=dict(channel=1),
-                variables=dict(amplitude=0),
-                var_formats=dict(amplitude="%d"),
-                categories=["actions", "DDS"],
-                comment="1,10,20,...1000")           
-
     act_lst.add("AOM DS + RepumperMOT Amp ", lib_action.DdsAction,
                 board="DDS36",
                 parameters=dict(channel=1),
@@ -369,7 +370,7 @@ def action_list_init(act_lst):
                 comment="LUT")
 
     act_lst.add("RF Landau-Zener LUT", lib_action.DdsAction,
-                board="DDS39",
+                board="dds39",
                 parameters=dict(),
                 variables=dict(n_lut=0),
                 var_formats=dict(n_lut="%d"),
@@ -377,7 +378,7 @@ def action_list_init(act_lst):
                 comment="CH1 0 to 2MHz, CH1[399] = 14MHz, CH2 0 to 200MHz")
 
     act_lst.add("RF Landau-Zener Amp", lib_action.DdsAction,
-                board="DDS39",
+                board="dds39",
                 parameters=dict(channel=1),
                 variables=dict(amplitude=0),
                 var_formats=dict(amplitude="%.3f"),
@@ -393,6 +394,14 @@ def action_list_init(act_lst):
                 categories=["actions", "DDS"],
                 comment="FullDdsAction")
 
+    act_lst.add("DDS39_setfull", lib_action.FullDdsAction,
+                board="dds39",
+                parameters=dict(),
+                variables=dict(ch0_freq=0, ch0_amp=0, ch0_phase=0, ch1_freq=0, ch1_amp=0, ch1_phase=0),
+                var_formats=dict(ch0_freq="%.3f", ch0_amp="%d", ch0_phase="%.3f", ch1_freq="%.3f", ch1_amp="%d", ch1_phase="%.3f"),
+                categories=["actions", "DDS"],
+                comment="FullDdsAction")
+                
     act_lst.add("DDS41_setnotrigger", lib_action.FullDdsAction,
                 board="dds41",
                 parameters=dict(realtime=True),
@@ -597,6 +606,7 @@ def action_list_init(act_lst):
 		    parameters=dict(channel=[15], status=[False]),
 		    categories=["actions", "TTL"])
 
+    
     act_lst.add("Relay BCompZ Normal", lib_action.DigitalAction,
 		    board="ttl1",
 		    parameters=dict(channel=[16], status=[False]),
@@ -659,12 +669,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[5], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Shutter Probe Vert ON", lib_action.DigitalAction,
+    act_lst.add("wait_fluorescence ON", lib_action.DigitalAction,
 		board="ttl2",
 		parameters=dict(channel=[6], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("Shutter probe Vert OFF", lib_action.DigitalAction,
+    act_lst.add("wait_fluorescence OFF", lib_action.DigitalAction,
 		board="ttl2",
 		parameters=dict(channel=[6], status=[False]),
 		categories=["actions", "TTL"])
@@ -845,12 +855,12 @@ def action_list_init(act_lst):
 		parameters=dict(channel=[7], status=[False]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL uW 3 ON", lib_action.DigitalAction,
+    act_lst.add("Oscilloscope 3 Trigger ON", lib_action.DigitalAction,
 		board="ttl3",
 		parameters=dict(channel=[3], status=[True]),
 		categories=["actions", "TTL"])
 
-    act_lst.add("TTL uW 3 OFF", lib_action.DigitalAction,
+    act_lst.add("Oscilloscope 3 Trigger OFF", lib_action.DigitalAction,
 		board="ttl3",
 		parameters=dict(channel=[3], status=[False]),
 		categories=["actions", "TTL"])
@@ -1057,6 +1067,9 @@ def action_list_init(act_lst):
 ###OTHER###
 
     act_lst.add("wait", lib_action.EmptyAction)
+    
+    act_lst.add("Shutter probe Vert OFF", lib_action.EmptyAction)
+    act_lst.add("Shutter Probe Vert ON", lib_action.EmptyAction)
 
 #    act_lst.add("Set Marconi1", lib_action.MarconiScriptAction,
 #                parameters=dict(script="data/devices/marconi_rpc.py"),

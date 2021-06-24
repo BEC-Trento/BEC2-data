@@ -4,12 +4,13 @@ def program(prg, cmd):
     prg.add(0, "Initialize 0 TTL and Synchronize.sub")
     prg.add(50000, "Switch Off MOT_fast")
     prg.add(5060000, "Set_MOT")
-    prg.add(135060000, "Switch Off MOT_fast")
-    prg.add(135060020, "Oscilloscope Trigger ON")
-    prg.add(135065250, "MOT_pictures_090120", functions=dict(time=lambda x: x + cmd.get_var('tof')))
-    prg.add(138565250, "Set_MOT")
-    prg.add(138565270, "Oscilloscope Trigger OFF")
-    prg.add(138565270, "Set_BrightMOT", enable=False)
+    prg.add(5160000, "Synchronize_MOT.sub")
+    prg.add(5260000, "Switch Off MOT_fast")
+    prg.add(5260020, "Oscilloscope Trigger ON")
+    prg.add(5265250, "MOT_pictures_090120", functions=dict(time=lambda x: x + cmd.get_var('tof')))
+    prg.add(8765250, "Set_MOT", enable=False)
+    prg.add(8765270, "Oscilloscope Trigger OFF")
+    prg.add(8765270, "Set_BrightMOT", enable=False)
     return prg
 def commands(cmd):
     import numpy as np
